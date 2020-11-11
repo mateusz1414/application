@@ -1,3 +1,4 @@
+{{define "content"}}
 <table class="content-table">
     <thead>
         <tr>
@@ -7,7 +8,6 @@
             <th>Data urodzenia</th>
             <th>Wydział</th>
             <th>Plec</th>
-            <th>Edytuj</th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +18,6 @@
             <td>2001-12-03</td>
             <td>Informatyk</td>
             <td>Mężczyzna</td>
-            <td><button>EDYTUJ</button></td>
         </tr>
         <tr>
             <td>2</td>
@@ -27,7 +26,6 @@
             <td>2001-12-03</td>
             <td>Informatyk</td>
             <td>Mężczyzna</td>
-            <td><button>EDYTUJ</button></td>
         </tr>
         <tr>
             <td>3</td>
@@ -36,7 +34,6 @@
             <td>2001-12-03</td>
             <td>Informatyk</td>
             <td>Mężczyzna</td>
-            <td><button>EDYTUJ</button></td>
         </tr>
         <tr>
             <td>4</td>
@@ -45,7 +42,7 @@
             <td>2001-12-03</td>
             <td>Informatyk</td>
             <td>Mężczyzna</td>
-            <td><button>EDYTUJ</button></td>
         </tr>
     </tbody>
 </table>
+{{end}}

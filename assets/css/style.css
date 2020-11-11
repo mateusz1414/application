@@ -86,7 +86,7 @@ aside{
 .page-aside{
     width: 100%;
     height: 100%;
-    padding: 50px;
+    padding: 1%;
 }
 
 footer{
@@ -144,6 +144,7 @@ footer{
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        width: 95%;
 }
 
 .login-table thead tr{
@@ -154,5 +155,5 @@ footer{
 }
 
 .login-table th, .login-table td{
-    padding: 12px 15px;
+    padding: 5% 5%;
 }

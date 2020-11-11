@@ -1,3 +1,8 @@
+{{define "page-aside"}}
+Logowanie</br>
+{{if .isLogined}}
+zalogowano
+{{else}}
 <table class="login-table">
     <thead>
         <tr>
@@ -13,3 +18,5 @@
         </tr>
     </thead>
 </table>
+{{end}}
+{{end}}
