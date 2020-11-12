@@ -11,38 +11,16 @@
         </tr>
     </thead>
     <tbody>
+        {{ range $index,$value :=.studentsList}}
         <tr>
-            <td>1</td>
-            <td>Marek</td>
-            <td>Kowalski</td>
-            <td>2001-12-03</td>
-            <td>Informatyk</td>
-            <td>Mężczyzna</td>
+            <td>{{$index}}</td>
+            <td>{{.StudentFirstName}}</td>
+            <td>{{.StudentLastName}}</td>
+            <td>{{.DateOfBrith}}</td>
+            <td>{{.StudentFaciulty}}</td>
+            <td>{{if eq .StudentGender "0"}}Mężczyzna{{else}}Kobieta{{end}}</td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Marek</td>
-            <td>Kowalski</td>
-            <td>2001-12-03</td>
-            <td>Informatyk</td>
-            <td>Mężczyzna</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Marek</td>
-            <td>Kowalski</td>
-            <td>2001-12-03</td>
-            <td>Informatyk</td>
-            <td>Mężczyzna</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Marek</td>
-            <td>Kowalski</td>
-            <td>2001-12-03</td>
-            <td>Informatyk</td>
-            <td>Mężczyzna</td>
-        </tr>
+        {{end}}
     </tbody>
 </table>
 {{end}}
