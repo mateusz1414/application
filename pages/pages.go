@@ -78,11 +78,10 @@ func RegisterStudents(c *gin.Context) {
 
 //EditForm page with form to change data of student
 func EditForm(c *gin.Context) {
-	/*	if !isLogined(c) {
+	if !isLogined(c) {
 		c.Redirect(301, "/register")
 		return
-	}*/
-	fmt.Println("wwwwwwwwwwwwwwwwwwwwww")
+	}
 	studentIDString, ok := c.Params.Get("studentID")
 	if !ok {
 		c.Redirect(301, "/editstudents")

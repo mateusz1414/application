@@ -68,6 +68,7 @@ section{
     width: 80%;
     float: left;
     height: 100%; 
+    overflow-x: hidden;
 }
 
 .page-section{
@@ -102,12 +103,11 @@ footer{
 }
 
 .content-table{
-    margin: 4% 20%;
+    margin-left:15%;
     border-collapse: collapse;
     font-size: 90%;
     min-width: 40%;
     border-radius: 5px 5px 0 0;
-    overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
