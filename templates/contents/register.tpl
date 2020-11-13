@@ -1,3 +1,4 @@
+{{define "content"}}
 <table class="content-table">
     <thead>
         <tr>
@@ -17,3 +18,4 @@
         </tr>
     </thead>
 </table>
+{{end}}

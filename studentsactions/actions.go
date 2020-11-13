@@ -44,5 +44,21 @@ func StudentsList() ([]Student, error) {
 		return result.Students, err
 	}
 	return result.Students, nil
+}
+
+//GetStudent getting student with id
+func (s *Student) GetStudent() error {
+	//should be correct in API
+	students, err := StudentsList()
+	if err != nil {
+		return err
+	}
+	for _, student := range students {
+		if student.StudentID == s.StudentID {
+			*s = student
+			return nil
+		}
+	}
+	return fmt.Errorf("Student not found")
 
 }

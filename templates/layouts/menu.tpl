@@ -6,7 +6,7 @@
             <li><a href="./addstudents">Dodawanie</a></li>
             <li><a href="./deletestudents">Usuwanie</a></li>
             <li><a href="/editstudents">Edycja</a></li>
-            <li><a href="#">Logowanie</a></li>
+            <li><a href="/register">Logowanie</a></li>
         </ul>
     </nav>
 </header>

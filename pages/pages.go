@@ -3,6 +3,7 @@ package pages
 import (
 	"application/studentsactions"
 	"fmt"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	ginsession "github.com/go-session/gin-session"
@@ -61,5 +62,48 @@ func EditStudents(c *gin.Context) {
 	c.HTML(200, "contents/edittable", gin.H{
 		"isLogined":    isLogined(c),
 		"studentsList": students,
+	})
+}
+
+//RegisterStudents load page to register or main page
+func RegisterStudents(c *gin.Context) {
+	if isLogined(c) {
+		c.Redirect(301, "/")
+		return
+	}
+	c.HTML(200, "contents/register", gin.H{
+		"isLogined": false,
+	})
+}
+
+//EditForm page with form to change data of student
+func EditForm(c *gin.Context) {
+	/*	if !isLogined(c) {
+		c.Redirect(301, "/register")
+		return
+	}*/
+	fmt.Println("wwwwwwwwwwwwwwwwwwwwww")
+	studentIDString, ok := c.Params.Get("studentID")
+	if !ok {
+		c.Redirect(301, "/editstudents")
+		return
+	}
+	studentIDInt, err := strconv.Atoi(studentIDString)
+	if err != nil {
+		fmt.Println("Server convert error:", err.Error())
+		c.Redirect(500, "/")
+		return
+	}
+	student := studentsactions.Student{}
+	student.StudentID = studentIDInt
+	err = student.GetStudent()
+	if err != nil {
+		fmt.Println(err.Error())
+		c.Redirect(500, "/")
+		return
+	}
+	c.HTML(200, "contents/editform", gin.H{
+		"isLogined": true,
+		"student":   student,
 	})
 }
