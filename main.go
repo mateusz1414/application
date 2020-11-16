@@ -1,6 +1,7 @@
 package main
 
 import (
+	"application/loginregister"
 	"application/pages"
 	"os"
 
@@ -27,6 +28,11 @@ func main() {
 	server.GET("/editstudents", pages.EditStudents)
 	server.GET("/register", pages.RegisterStudents)
 	server.GET("/editstudentform/:studentID", pages.EditForm)
+	user := server.Group("user")
+	{
+		user.POST("/register", loginregister.Register)
+		user.POST("/login", loginregister.Login)
+	}
 	//user := server.Group("user")
 	//      /user/regiser
 	/*	{

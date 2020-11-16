@@ -1,22 +1,36 @@
 package pages
 
 import (
+	"application/loginregister"
 	"application/studentsactions"
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	ginsession "github.com/go-session/gin-session"
 )
 
-func isLogined(c *gin.Context) bool {
+func getLoginError(c *gin.Context) (returnMessage string) {
 	store := ginsession.FromContext(c)
-	_, ok := store.Get("apikey")
-	if ok {
-		return true
+	message, ok := store.Get("loginError")
+	if !ok {
+		return ""
 	}
-	return false
+	returnMessage = message.(string)
+	store.Delete("loginError")
+	return returnMessage
+}
 
+func getRegisterError(c *gin.Context) (returnMessage string) {
+	store := ginsession.FromContext(c)
+	message, ok := store.Get("registerError")
+	if !ok {
+		return ""
+	}
+	returnMessage = message.(string)
+	store.Delete("registerError")
+	return returnMessage
 }
 
 //ShowStudents page with table of students
@@ -27,7 +41,7 @@ func ShowStudents(c *gin.Context) {
 		fmt.Println(err.Error())
 	}
 	c.HTML(200, "contents/showtable", gin.H{
-		"isLogined":    isLogined(c),
+		"isLogined":    loginregister.IsLogined(c),
 		"studentsList": students,
 	})
 }
@@ -35,7 +49,7 @@ func ShowStudents(c *gin.Context) {
 //AddStudents page with add student form
 func AddStudents(c *gin.Context) {
 	c.HTML(200, "contents/addtable", gin.H{
-		"isLogined": isLogined(c),
+		"isLogined": loginregister.IsLogined(c),
 	})
 }
 
@@ -47,7 +61,7 @@ func DeleteStudents(c *gin.Context) {
 		fmt.Println(err.Error())
 	}
 	c.HTML(200, "contents/deletetable", gin.H{
-		"isLogined":    isLogined(c),
+		"isLogined":    loginregister.IsLogined(c),
 		"studentsList": students,
 	})
 }
@@ -60,25 +74,27 @@ func EditStudents(c *gin.Context) {
 		fmt.Println(err.Error())
 	}
 	c.HTML(200, "contents/edittable", gin.H{
-		"isLogined":    isLogined(c),
+		"isLogined":    loginregister.IsLogined(c),
 		"studentsList": students,
 	})
 }
 
 //RegisterStudents load page to register or main page
 func RegisterStudents(c *gin.Context) {
-	if isLogined(c) {
+	if loginregister.IsLogined(c) {
 		c.Redirect(301, "/")
 		return
 	}
 	c.HTML(200, "contents/register", gin.H{
-		"isLogined": false,
+		"isLogined":     false,
+		"loginError":    strings.Split(getLoginError(c), "\n"),
+		"registerError": strings.Split(getRegisterError(c), "\n"),
 	})
 }
 
 //EditForm page with form to change data of student
 func EditForm(c *gin.Context) {
-	if !isLogined(c) {
+	if !loginregister.IsLogined(c) {
 		c.Redirect(301, "/register")
 		return
 	}

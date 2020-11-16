@@ -157,3 +157,9 @@ footer{
 .login-table th, .login-table td{
     padding: 5% 5%;
 }
+
+.errors{
+    font-size: 120%;
+    text-align: center;
+    border-bottom: 1px solid rgba(34, 58, 25, 0.15);
+}
