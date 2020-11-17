@@ -20,7 +20,7 @@
             <td>{{.DateOfBrith}}</td>
             <td>{{.StudentFaciulty}}</td>
             <td>{{if eq .StudentGender "0"}}Mężczyzna{{else}}Kobieta{{end}}</td>
-            <td><a href="editstudentform/{{.StudentID}}"><button>EDYTUJ</button></a></td>
+            <td><a href="/editstudentform/{{.StudentID}}/"><button>EDYTUJ</button></a></td>
         </tr>
         {{end}}
     </tbody>

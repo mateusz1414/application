@@ -17,10 +17,12 @@ type User struct {
 }
 
 type Result struct {
-	Status    int    `json:"Status"`
-	Message   string `json:"Message"`
-	ErrorCode string `json:"ErrorCode"`
-	AuthToken string `json:"AuthToken"`
+	Status     int    `json:"Status"`
+	Message    string `json:"Message"`
+	ErrorCode  string `json:"ErrorCode"`
+	UpdateRows string `json:"UpdateRows"`
+	AuthToken  string `json:"AuthToken"`
+	Error      string `json:"Error"`
 }
 
 func IsLogined(c *gin.Context) bool {
@@ -75,16 +77,12 @@ func SendHttpRequest(user User, endpoint string) (Result, error) {
 	return res, nil
 }
 
-func SetError(c *gin.Context, key string, res Result) {
+func SetError(c *gin.Context, key string, res Result, redirect string) {
 	store := ginsession.FromContext(c)
 	message := fmt.Sprintf("%v \n %v", res.Message, res.ErrorCode)
 	store.Set(key, message)
-	err := store.Save()
-	if err != nil {
-		c.Redirect(302, "/register")
-		return
-	}
-	c.Redirect(302, "/register")
+	store.Save()
+	c.Redirect(302, redirect)
 }
 
 func Login(c *gin.Context) {
@@ -94,19 +92,19 @@ func Login(c *gin.Context) {
 		ErrorCode: "",
 	}
 	if IsLogined(c) {
-		c.Redirect(301, "/")
+		c.Redirect(302, "/")
 		return
 	}
 	user := User{}
 	count := user.GetPostInformation(c)
 	if count != 1 {
-		SetError(c, key, res)
+		SetError(c, key, res, "/register")
 		return
 	}
 	endpoint := "http://studenci.herokuapp.com/user/login"
 	res, err := SendHttpRequest(user, endpoint)
 	if err != nil {
-		SetError(c, key, res)
+		SetError(c, key, res, "/register")
 		return
 	}
 	store := ginsession.FromContext(c)
@@ -116,10 +114,10 @@ func Login(c *gin.Context) {
 		SetError(c, key, Result{
 			Message:   "Wystąpił błąd podczas logowania",
 			ErrorCode: "",
-		})
+		}, "/register")
 		return
 	}
-	c.Redirect(301, "/")
+	c.Redirect(302, "/")
 	/*bodyBytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return
@@ -137,21 +135,21 @@ func Register(c *gin.Context) {
 		ErrorCode: "",
 	}
 	if IsLogined(c) {
-		c.Redirect(301, "/")
+		c.Redirect(302, "/")
 		return
 	}
 	user := User{}
 	count := user.GetPostInformation(c)
 	if count != 0 {
-		SetError(c, key, res)
+		SetError(c, key, res, "/register")
 		return
 	}
 	endpoint := "http://studenci.herokuapp.com/user/register"
 	res, err := SendHttpRequest(user, endpoint)
 	if err != nil {
-		SetError(c, key, res)
+		SetError(c, key, res, "/register")
 		return
 	}
 
-	c.Redirect(301, "/register")
+	c.Redirect(302, "/register")
 }

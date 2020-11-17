@@ -82,7 +82,7 @@ func EditStudents(c *gin.Context) {
 //RegisterStudents load page to register or main page
 func RegisterStudents(c *gin.Context) {
 	if loginregister.IsLogined(c) {
-		c.Redirect(301, "/")
+		c.Redirect(302, "/")
 		return
 	}
 	c.HTML(200, "contents/register", gin.H{
@@ -95,12 +95,12 @@ func RegisterStudents(c *gin.Context) {
 //EditForm page with form to change data of student
 func EditForm(c *gin.Context) {
 	if !loginregister.IsLogined(c) {
-		c.Redirect(301, "/register")
+		c.Redirect(302, "/register")
 		return
 	}
 	studentIDString, ok := c.Params.Get("studentID")
 	if !ok {
-		c.Redirect(301, "/editstudents")
+		c.Redirect(302, "/editstudents")
 		return
 	}
 	studentIDInt, err := strconv.Atoi(studentIDString)

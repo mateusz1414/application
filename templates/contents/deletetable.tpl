@@ -20,7 +20,7 @@
             <td>{{.DateOfBrith}}</td>
             <td>{{.StudentFaciulty}}</td>
             <td>{{if eq .StudentGender "0"}}Mężczyzna{{else}}Kobieta{{end}}</td>
-            <td><a href="action/delete/{{.StudentID}}"><button>USUŃ</button></a></td>
+            <td><a href="/action/del/{{.StudentID}}"><button>USUŃ</button></a></td>
         </tr>
         {{end}}
 

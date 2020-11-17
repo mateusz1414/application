@@ -9,7 +9,7 @@ zalogowano
 {{end}}</p>
 {{end}}
 <table class="login-table">
-<form action="user/login" method="POST">
+<form action="/user/login/" method="POST">
     <thead>
         <tr>
             <th>Login:</th>
