@@ -15,10 +15,22 @@ func LoadBundles() *i18n.Bundle {
 
 func LoadTranslation(localizer *i18n.Localizer) map[string]string {
 	translated := make(map[string]string)
-	translated["h1Banner"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["H1Banner"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "HelloPerson",
-			Other: "Hello",
+			ID:    "H1Banner",
+			Other: "My owner application",
+		},
+	})
+	translated["MenuDisplay"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "MenuDisplay",
+			Other: "Display",
+		},
+	})
+	translated["MenuAdd"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "MenuAdd",
+			Other: "Addition",
 		},
 	})
 	return translated

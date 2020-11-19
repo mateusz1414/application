@@ -51,14 +51,17 @@ func ShowStudents(c *gin.Context) {
 
 //AddStudents page with add student form
 func AddStudents(c *gin.Context) {
+	translation, _ := c.Get("translation")
 	c.HTML(200, "contents/addtable", gin.H{
-		"isLogined": loginregister.IsLogined(c),
-		"language":  loginregister.GetLanguage(c),
+		"isLogined":   loginregister.IsLogined(c),
+		"language":    loginregister.GetLanguage(c),
+		"translation": translation.(map[string]string),
 	})
 }
 
 //DeleteStudents page with table to delete students
 func DeleteStudents(c *gin.Context) {
+	translation, _ := c.Get("translation")
 	students := []studentsactions.Student{}
 	students, err := studentsactions.StudentsList()
 	if err != nil {
@@ -68,11 +71,13 @@ func DeleteStudents(c *gin.Context) {
 		"isLogined":    loginregister.IsLogined(c),
 		"studentsList": students,
 		"language":     loginregister.GetLanguage(c),
+		"translation":  translation.(map[string]string),
 	})
 }
 
 //EditStudents page with table to edit students
 func EditStudents(c *gin.Context) {
+	translation, _ := c.Get("translation")
 	students := []studentsactions.Student{}
 	students, err := studentsactions.StudentsList()
 	if err != nil {
@@ -82,11 +87,13 @@ func EditStudents(c *gin.Context) {
 		"isLogined":    loginregister.IsLogined(c),
 		"studentsList": students,
 		"language":     loginregister.GetLanguage(c),
+		"translation":  translation.(map[string]string),
 	})
 }
 
 //RegisterStudents load page to register or main page
 func RegisterStudents(c *gin.Context) {
+	translation, _ := c.Get("translation")
 	language := loginregister.GetLanguage(c)
 	if loginregister.IsLogined(c) {
 		c.Redirect(302, "/"+language+"/")
@@ -97,11 +104,13 @@ func RegisterStudents(c *gin.Context) {
 		"loginError":    strings.Split(getLoginError(c), "\n"),
 		"registerError": strings.Split(getRegisterError(c), "\n"),
 		"language":      language,
+		"translation":   translation.(map[string]string),
 	})
 }
 
 //EditForm page with form to change data of student
 func EditForm(c *gin.Context) {
+	translation, _ := c.Get("translation")
 	language := loginregister.GetLanguage(c)
 	if !loginregister.IsLogined(c) {
 		c.Redirect(302, "/"+language+"/register")
@@ -127,8 +136,9 @@ func EditForm(c *gin.Context) {
 		return
 	}
 	c.HTML(200, "contents/editform", gin.H{
-		"isLogined": true,
-		"student":   student,
-		"language":  language,
+		"isLogined":   true,
+		"student":     student,
+		"language":    language,
+		"translation": translation.(map[string]string),
 	})
 }

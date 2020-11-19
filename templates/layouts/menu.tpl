@@ -1,5 +1,5 @@
 <header>
-    <h1 class="logo">moja własna aplikacja</h1>
+    <h1 class="logo">{{index .translation "H1Banner"}}</h1>
     <nav>
         <ul class="page-nav">
             <li><a href="/{{.language}}/showstudents/">Wyświetlanie</a></li>

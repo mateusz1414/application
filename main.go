@@ -21,6 +21,7 @@ import (
 func main() {
 	bundle := i18n.NewBundle(language.English)
 	bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
+	bundle.LoadMessageFile("translation/languages/active.pl.toml")
 	server := gin.Default()
 	server.HTMLRender = gintemplate.New(gintemplate.TemplateConfig{
 		Root:         "templates",
@@ -35,11 +36,12 @@ func main() {
 	defaultLanguage := server.Group("/")
 	{
 		defaultLanguage.Use(setLanguage("", bundle))
-		defaultLanguage.GET("/a", func(c *gin.Context) {
-			c.JSON(200, gin.H{
-				"hello": "world",
-			})
-		})
+		direct(defaultLanguage)
+		/*		defaultLanguage.GET("/", func(c *gin.Context) {
+				c.JSON(200, gin.H{
+					"hello": "world",
+				})
+			})*/
 	}
 	polish := server.Group("pl")
 	{
