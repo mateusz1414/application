@@ -5,7 +5,7 @@
 {{end}}
 {{end}}</p>
 <table class="content-table">
-<form action="/user/register/" method="POST">
+<form action="/{{.language}}/user/register/" method="POST">
     <thead>
         <tr>
             <th>Login:</th>

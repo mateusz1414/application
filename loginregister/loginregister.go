@@ -34,6 +34,15 @@ func IsLogined(c *gin.Context) bool {
 	return false
 
 }
+
+func GetLanguage(c *gin.Context) string {
+	language, ok := c.Get("language")
+	if !ok {
+		return "en"
+	}
+	return language.(string)
+}
+
 func (u *User) GetPostInformation(c *gin.Context) int {
 	var ok bool
 	count := 0
@@ -86,25 +95,26 @@ func SetError(c *gin.Context, key string, res Result, redirect string) {
 }
 
 func Login(c *gin.Context) {
+	language := GetLanguage(c)
 	key := "loginError"
 	res := Result{
 		Message:   "Należy się zalogować",
 		ErrorCode: "",
 	}
 	if IsLogined(c) {
-		c.Redirect(302, "/")
+		c.Redirect(302, "/"+language+"/")
 		return
 	}
 	user := User{}
 	count := user.GetPostInformation(c)
 	if count != 1 {
-		SetError(c, key, res, "/register")
+		SetError(c, key, res, "/"+language+"/register")
 		return
 	}
 	endpoint := "http://studenci.herokuapp.com/user/login"
 	res, err := SendHttpRequest(user, endpoint)
 	if err != nil {
-		SetError(c, key, res, "/register")
+		SetError(c, key, res, "/"+language+"/register")
 		return
 	}
 	store := ginsession.FromContext(c)
@@ -114,10 +124,10 @@ func Login(c *gin.Context) {
 		SetError(c, key, Result{
 			Message:   "Wystąpił błąd podczas logowania",
 			ErrorCode: "",
-		}, "/register")
+		}, "/"+language+"/register")
 		return
 	}
-	c.Redirect(302, "/")
+	c.Redirect(302, "/"+language+"/")
 	/*bodyBytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return
@@ -129,27 +139,28 @@ func Login(c *gin.Context) {
 }
 
 func Register(c *gin.Context) {
+	language := GetLanguage(c)
 	key := "registerError"
 	res := Result{
 		Message:   "Wystąpił błąd podczas rejestracji",
 		ErrorCode: "",
 	}
 	if IsLogined(c) {
-		c.Redirect(302, "/")
+		c.Redirect(302, "/"+language+"/")
 		return
 	}
 	user := User{}
 	count := user.GetPostInformation(c)
 	if count != 0 {
-		SetError(c, key, res, "/register")
+		SetError(c, key, res, "/"+language+"/register")
 		return
 	}
 	endpoint := "http://studenci.herokuapp.com/user/register"
 	res, err := SendHttpRequest(user, endpoint)
 	if err != nil {
-		SetError(c, key, res, "/register")
+		SetError(c, key, res, "/"+language+"/register")
 		return
 	}
 
-	c.Redirect(302, "/register")
+	c.Redirect(302, "/"+language+"/register")
 }

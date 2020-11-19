@@ -1,5 +1,6 @@
 {{define "content"}}
 <table class="content-table">
+    {{index .translation "h1Banner"}}
     <thead>
         <tr>
             <th>Lp.</th>

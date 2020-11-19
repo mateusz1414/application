@@ -115,11 +115,12 @@ func clearJWT(c *gin.Context) {
 
 //AddStudent add student to database
 func AddStudent(c *gin.Context) {
+	language := loginregister.GetLanguage(c)
 	jwt, ok := c.Get("jwt")
 	if !ok {
 		loginregister.SetError(c, "loginError", loginregister.Result{
 			Message: "Należy się zalogować",
-		}, "/register")
+		}, "/"+language+"/register")
 		return
 	}
 	student := Student{}
@@ -130,36 +131,37 @@ func AddStudent(c *gin.Context) {
 		clearJWT(c)
 		loginregister.SetError(c, "loginError", loginregister.Result{
 			Message: "Należy się zalogować",
-		}, "/register/")
+		}, "/"+language+"/register/")
 		return
 	}
 	if err != nil {
-		loginregister.SetError(c, "addError", result, "/addstudents")
+		loginregister.SetError(c, "addError", result, "/"+language+"/addstudents")
 		return
 	}
-	c.Redirect(302, "/")
+	c.Redirect(302, "/"+language+"/")
 
 }
 
 //DelStudent delete student from database
 func DelStudent(c *gin.Context) {
+	language := loginregister.GetLanguage(c)
 	jwt, ok := c.Get("jwt")
 	if !ok {
 		loginregister.SetError(c, "loginError", loginregister.Result{
 			Message: "Należy się zalogować",
-		}, "/register")
+		}, "/"+language+"/register")
 		return
 	}
 	student := Student{}
 	studentIDString, ok := c.Params.Get("studentID")
 	if !ok {
-		c.Redirect(302, "/deletestudents/")
+		c.Redirect(302, "/"+language+"/deletestudents/")
 		return
 	}
 	var err error
 	student.StudentID, err = strconv.Atoi(studentIDString)
 	if err != nil {
-		c.Redirect(302, "/deletestudents/")
+		c.Redirect(302, "/"+language+"/deletestudents/")
 		return
 	}
 	endpoint := "https://studenci.herokuapp.com/student/" + studentIDString
@@ -168,24 +170,25 @@ func DelStudent(c *gin.Context) {
 		clearJWT(c)
 		loginregister.SetError(c, "loginError", loginregister.Result{
 			Message: "Należy się zalogować",
-		}, "/register/")
+		}, "/"+language+"/register/")
 		return
 	}
 	if err != nil {
 		fmt.Println(result)
-		c.Redirect(302, "/deletestudents/")
+		c.Redirect(302, "/"+language+"/deletestudents/")
 		return
 	}
-	c.Redirect(302, "/")
+	c.Redirect(302, "/"+language+"/")
 }
 
 //EditStudent change data of student in database
 func EditStudent(c *gin.Context) {
+	language := loginregister.GetLanguage(c)
 	jwt, ok := c.Get("jwt")
 	if !ok {
 		loginregister.SetError(c, "loginError", loginregister.Result{
 			Message: "Należy się zalogować",
-		}, "/register")
+		}, "/"+language+"/register")
 		return
 	}
 	student := Student{}
@@ -197,14 +200,14 @@ func EditStudent(c *gin.Context) {
 		clearJWT(c)
 		loginregister.SetError(c, "loginError", loginregister.Result{
 			Message: "Należy się zalogować",
-		}, "/register/")
+		}, "/"+language+"/register/")
 		return
 	}
 	if err != nil {
-		loginregister.SetError(c, "editError", result, "/editstudentform/"+studentIDString)
+		loginregister.SetError(c, "editError", result, "/"+language+"/editstudentform/"+studentIDString)
 		return
 	}
 
-	c.Redirect(302, "/")
+	c.Redirect(302, "/"+language+"/")
 
 }

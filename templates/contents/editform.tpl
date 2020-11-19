@@ -1,6 +1,6 @@
 
 {{define "content"}}
-<form method="post" action="/action/edit/">
+<form method="post" action="/{{.language}}/action/edit/">
     <table class="content-table">
         <thead>
             <tr>

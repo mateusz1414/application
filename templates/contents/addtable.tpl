@@ -1,5 +1,5 @@
 {{define "content"}}  
- <form action="/action/add/" method="post">
+ <form action="/{{.language}}/action/add/" method="post">
     <table class="content-table">
         <thead>
             <tr>
