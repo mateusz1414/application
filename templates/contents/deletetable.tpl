@@ -2,16 +2,19 @@
 <table class="content-table">
     <thead>
         <tr>
-            <th>Lp.</th>
-            <th>Imie</th>
-            <th>Nazwisko</th>
-            <th>Data urodzenia</th>
-            <th>Wydział</th>
-            <th>Plec</th>
-            <th>Usuń</th>
+            <th>{{index .translation "Display#"}}</th>
+            <th>{{index .translation "DisplayName"}}</th>
+            <th>{{index .translation "DisplayLastName"}}</th>
+            <th>{{index .translation "DisplayDateOfBirth"}}</th>
+            <th>{{index .translation "DisplayDepartment"}}</th>
+            <th>{{index .translation "DisplayGender"}}</th>
+            <th>{{index .translation "DisplayDelete"}}</th>
         </tr>
     </thead>
     <tbody>
+        {{$displaydelete:=index .translation "DisplayDelete"}}
+        {{$displayselectmen:=index .translation "DisplaySelectMen"}}
+        {{$displayselectwomen:=index .translation "DisplaySelectWomen"}}
         {{$language:=.language}}
         {{ range $index,$value :=.studentsList}}
         <tr>
@@ -20,8 +23,8 @@
             <td>{{.StudentLastName}}</td>
             <td>{{.DateOfBrith}}</td>
             <td>{{.StudentFaciulty}}</td>
-            <td>{{if eq .StudentGender "0"}}Mężczyzna{{else}}Kobieta{{end}}</td>
-            <td><a href="/{{$language}}/action/del/{{.StudentID}}"><button>USUŃ</button></a></td>
+            <td>{{if eq .StudentGender "0"}}{{$displayselectmen}}{{else}}{{$displayselectwomen}}{{end}}</td>
+            <td><a href="/{{$language}}/action/del/{{.StudentID}}"><button>{{$displaydelete}}</button></a></td>
         </tr>
         {{end}}
 

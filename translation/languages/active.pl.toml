@@ -1,3 +1,139 @@
+["Display#"]
+hash = "sha1-d08f88df745fa7950b104e4a707a31cfce7b5841"
+other = "Lp."
+
+[DisplayAdd]
+hash = "sha1-61cc55aa0453184734c3fa0b621eda6fa874bd83"
+other = "Dodaj"
+
+[DisplayChange]
+hash = "sha1-64fbd995d3b6b156ee26ae3c03e6516434c34c12"
+other = "Zmień"
+
+[DisplayDateOfBirth]
+hash = "sha1-9518425f4174063deaa8350a027abe1f38cf535b"
+other = "Data urodzenia"
+
+[DisplayDelete]
+hash = "sha1-f6fdbe48dc54dd86f63097a03bd24094dedd713a"
+other = "Usuń"
+
+[DisplayDepartment]
+hash = "sha1-db40106a405135d4021c1efffb756063ccb2315f"
+other = "Wydział"
+
+[DisplayEdit]
+hash = "sha1-5301648dcf6b53cefc9ed52999aaa92d4603cae0"
+other = "Edytuj"
+
+[DisplayFooter]
+hash = "sha1-26c01e70a337f208f56dae1c3bc18f60c4bff453"
+other = "Stopka"
+
+[DisplayGender]
+hash = "sha1-8a754c61c2ced0c5ff79a1827e02c9d643d6d926"
+other = "Płeć"
+
+[DisplayLastName]
+hash = "sha1-adec36a821f81a6990b1e65d9e4ac5fb8ee2a205"
+other = "Nazwisko"
+
+[DisplayLogged]
+hash = "sha1-567a04e87e0264325ea2d8341bf4b0ffb622ca3f"
+other = "zalogowany"
+
+[DisplayLogin]
+hash = "sha1-4e5a2893bdcc7d239c1db72e4c4ffbe4bea73174"
+other = "Login"
+
+[DisplayLoginIn]
+hash = "sha1-e3e7f80a1e8e1c1e1958dc368d361db864e86614"
+other = "Zaloguj"
+
+[DisplayName]
+hash = "sha1-709a23220f2c3d64d1e1d6d18c4d5280f8d82fca"
+other = "Imię"
+
+[DisplayPassword]
+hash = "sha1-8be3c943b1609fffbfc51aad666d0a04adf83c9d"
+other = "Hasło"
+
+[DisplayRegister]
+hash = "sha1-d672995a14650d0e018026b64f297663d8c71c8d"
+other = "Zarejestruj"
+
+[DisplaySelectMen]
+hash = "sha1-a9b53b05c3441eeb6e059f55fa44d7efe91481a6"
+other = "Mężczyzna"
+
+[DisplaySelectWomen]
+hash = "sha1-3a65e770b28af650164e9f6d344162ce8cde7d15"
+other = "Kobieta"
+
 [H1Banner]
 hash = "sha1-298371317aac7577c4d7e510c3787446e260a961"
 other = "Moja własna aplikacja"
+
+[IncorrectLoginOrPassword]
+hash = "sha1-95e2bb6e40c219d101888b71b5c5d8c2b375865e"
+other = "Niepoprawny login lub hasło"
+
+[LoginFailed]
+hash = "sha1-2a9d6340377d62a8c97b37a8c46ce454faf17a26"
+other = "Niepoprawne dane logowania"
+
+[LoginIsTooShort]
+hash = "sha1-a53667ac29a5cd0fc5118acad692f84c01cc13ab"
+other = "Login jest zbyt krótki"
+
+[MenuAdd]
+hash = "sha1-8e8428e85c661f03dd33db8f12b20a010ab5be5e"
+other = "Dodawanie"
+
+[MenuDelete]
+hash = "sha1-f6fdbe48dc54dd86f63097a03bd24094dedd713a"
+other = "Usuwanie"
+
+[MenuDisplay]
+hash = "sha1-574ff9b0c49cdeb5f5508548ae0cab44fecee038"
+other = "Wyświetlanie"
+
+[MenuEdit]
+hash = "sha1-5301648dcf6b53cefc9ed52999aaa92d4603cae0"
+other = "Edycja"
+
+[MenuRegister]
+hash = "sha1-d672995a14650d0e018026b64f297663d8c71c8d"
+other = "Rejestracja"
+
+[MustLoginInError]
+hash = "sha1-26aa3a2e7f04a0cba98d10ae8b446328d5645688"
+other = "Musisz się zalogować"
+
+[PasswordIsTooShort]
+hash = "sha1-bf8439779e3b5235356802d181792fa80ed5f94c"
+other = "Hasło jest zbyt krótkie"
+
+[PasswordsDoNotMatch]
+hash = "sha1-d69c3b1ac54be7da3666d9937b9c78e7c309d6e8"
+other = "Hasła nie są takie same"
+
+[RegistrationFailed]
+hash = "sha1-8bfb1a9744e837fe3540134a347207cbe5937fa7"
+other = "Nieudało się zarejestrować"
+
+[SuccessfullyRegistered]
+hash = "sha1-416a551f7a5acd38686b67a73c68098a508758bc"
+other = "Poprawnie zarejetrowano"
+
+[ThisUserAlreadyExists]
+hash = "sha1-c7e13050fa9d0e2a21d12b6f6cc655f3751e3dc3"
+other = "Użytkownik już istnieje"
+
+[AddError]
+hash = "sha1-f2652dc8c84bc253fed4f400166723cf60325726"
+other = "Nie udało się dodać studenta"
+
+[EditError]
+hash = "sha1-ed73c65668e89b56893bd26dd27abffb8a1635e1"
+other = "Edycja nie powiodła się"

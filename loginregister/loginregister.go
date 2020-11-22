@@ -86,21 +86,30 @@ func SendHttpRequest(user User, endpoint string) (Result, error) {
 	return res, nil
 }
 
-func SetError(c *gin.Context, key string, res Result, redirect string) {
+func SetError(c *gin.Context, key string, value string) {
 	store := ginsession.FromContext(c)
-	message := fmt.Sprintf("%v \n %v", res.Message, res.ErrorCode)
-	store.Set(key, message)
+	store.Set(key, value)
 	store.Save()
-	c.Redirect(302, redirect)
+}
+
+func setErrorMessage(errorCode string) string {
+	switch errorCode {
+	case "Taki urzytkownik już istnieje":
+		return "ThisUserAlreadyExists"
+	case "Hasła nie są jednakowe":
+		return "PasswordsDoNotMatch"
+	case "Hasło jest zbyt krótkie":
+		return "PasswordIsTooShort"
+	case "Login jest zbyt krótki":
+		return "LoginIsTooShort"
+	}
+	return ""
 }
 
 func Login(c *gin.Context) {
 	language := GetLanguage(c)
-	key := "loginError"
-	res := Result{
-		Message:   "Należy się zalogować",
-		ErrorCode: "",
-	}
+	redirectURL := "/" + language + "/register/"
+	res := Result{}
 	if IsLogined(c) {
 		c.Redirect(302, "/"+language+"/")
 		return
@@ -108,23 +117,23 @@ func Login(c *gin.Context) {
 	user := User{}
 	count := user.GetPostInformation(c)
 	if count != 1 {
-		SetError(c, key, res, "/"+language+"/register")
+		c.Redirect(302, redirectURL)
 		return
 	}
 	endpoint := "http://studenci.herokuapp.com/user/login"
 	res, err := SendHttpRequest(user, endpoint)
 	if err != nil {
-		SetError(c, key, res, "/"+language+"/register")
+		SetError(c, "LoginErrorFirst", "LoginFailed")
+		SetError(c, "LoginErrorSecond", "IncorrectLoginOrPassword")
+		c.Redirect(302, redirectURL)
 		return
 	}
 	store := ginsession.FromContext(c)
 	store.Set("jwt", res.AuthToken)
 	err = store.Save()
 	if err != nil {
-		SetError(c, key, Result{
-			Message:   "Wystąpił błąd podczas logowania",
-			ErrorCode: "",
-		}, "/"+language+"/register")
+		SetError(c, "LoginErrorFirst", "LoginFailed")
+		c.Redirect(302, redirectURL)
 		return
 	}
 	c.Redirect(302, "/"+language+"/")
@@ -140,11 +149,8 @@ func Login(c *gin.Context) {
 
 func Register(c *gin.Context) {
 	language := GetLanguage(c)
-	key := "registerError"
-	res := Result{
-		Message:   "Wystąpił błąd podczas rejestracji",
-		ErrorCode: "",
-	}
+	redirectURL := "/" + language + "/register/"
+	res := Result{}
 	if IsLogined(c) {
 		c.Redirect(302, "/"+language+"/")
 		return
@@ -152,15 +158,17 @@ func Register(c *gin.Context) {
 	user := User{}
 	count := user.GetPostInformation(c)
 	if count != 0 {
-		SetError(c, key, res, "/"+language+"/register")
+		c.Redirect(302, "/"+language+"/")
 		return
 	}
-	endpoint := "http://studenci.herokuapp.com/user/register"
+	endpoint := "http://studenci.herokuapp.com/user/register/"
 	res, err := SendHttpRequest(user, endpoint)
 	if err != nil {
-		SetError(c, key, res, "/"+language+"/register")
+		SetError(c, "RegisterErrorFirst", "RegistrationFailed")
+		SetError(c, "RegisterErrorSecond", setErrorMessage(res.ErrorCode))
+		c.Redirect(302, redirectURL)
 		return
 	}
 
-	c.Redirect(302, "/"+language+"/register")
+	c.Redirect(302, redirectURL)
 }

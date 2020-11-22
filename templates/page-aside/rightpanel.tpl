@@ -1,26 +1,31 @@
 {{define "page-aside"}}
-Logowanie</br>
 {{if .isLogined}}
-zalogowano
+{{index .translation "DisplayLogged"}}
 {{else}}
-<p class="errors">{{if .loginError}}
-{{range .loginError}}
-{{.}}</br>
-{{end}}</p>
+{{index .translation "DisplayLoginIn"}}</br>
+{{if .loginErrorFirst}}
+<p class="errors">
+{{index .translation .loginErrorFirst}}
+</p>
+{{end}}
+{{if .loginErrorSecond}}
+<p class="errors">
+{{index .translation .loginErrorSecond}}
+</p>
 {{end}}
 <table class="login-table">
 <form action="/{{.language}}/user/login/" method="POST">
     <thead>
         <tr>
-            <th>Login:</th>
+            <th>{{index .translation "DisplayLogin"}}:</th>
             <td><input type="text" name="user"></td>
         </tr>
         <tr>
-            <th>Hasło:</th>
+            <th>{{index .translation "DisplayPassword"}}:</th>
             <td><input type="password" name="password"></td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align: center;"><button>ZALOGUJ</button></td>
+            <td colspan="2" style="text-align: center;"><button>{{index .translation "DisplayLoginIn"}}</button></td>
         </tr>
     </thead>
     </form>

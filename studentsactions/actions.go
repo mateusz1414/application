@@ -118,9 +118,8 @@ func AddStudent(c *gin.Context) {
 	language := loginregister.GetLanguage(c)
 	jwt, ok := c.Get("jwt")
 	if !ok {
-		loginregister.SetError(c, "loginError", loginregister.Result{
-			Message: "Należy się zalogować",
-		}, "/"+language+"/register")
+		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
+		c.Redirect(302, "/"+language+"/register/")
 		return
 	}
 	student := Student{}
@@ -129,13 +128,13 @@ func AddStudent(c *gin.Context) {
 	result, err := sendHTTPRequest(student, endpoint, http.MethodPost, jwt.(string))
 	if result.Error != "" {
 		clearJWT(c)
-		loginregister.SetError(c, "loginError", loginregister.Result{
-			Message: "Należy się zalogować",
-		}, "/"+language+"/register/")
+		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
+		c.Redirect(302, "/"+language+"/register/")
 		return
 	}
 	if err != nil {
-		loginregister.SetError(c, "addError", result, "/"+language+"/addstudents")
+		loginregister.SetError(c, "addError", "AddError")
+		c.Redirect(302, "/"+language+"/addstudents/")
 		return
 	}
 	c.Redirect(302, "/"+language+"/")
@@ -147,9 +146,8 @@ func DelStudent(c *gin.Context) {
 	language := loginregister.GetLanguage(c)
 	jwt, ok := c.Get("jwt")
 	if !ok {
-		loginregister.SetError(c, "loginError", loginregister.Result{
-			Message: "Należy się zalogować",
-		}, "/"+language+"/register")
+		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
+		c.Redirect(302, "/"+language+"/register/")
 		return
 	}
 	student := Student{}
@@ -168,9 +166,8 @@ func DelStudent(c *gin.Context) {
 	result, err := sendHTTPRequest(student, endpoint, http.MethodDelete, jwt.(string))
 	if result.Error != "" {
 		clearJWT(c)
-		loginregister.SetError(c, "loginError", loginregister.Result{
-			Message: "Należy się zalogować",
-		}, "/"+language+"/register/")
+		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
+		c.Redirect(302, "/"+language+"/register/")
 		return
 	}
 	if err != nil {
@@ -186,9 +183,8 @@ func EditStudent(c *gin.Context) {
 	language := loginregister.GetLanguage(c)
 	jwt, ok := c.Get("jwt")
 	if !ok {
-		loginregister.SetError(c, "loginError", loginregister.Result{
-			Message: "Należy się zalogować",
-		}, "/"+language+"/register")
+		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
+		c.Redirect(302, "/"+language+"/register/")
 		return
 	}
 	student := Student{}
@@ -198,13 +194,13 @@ func EditStudent(c *gin.Context) {
 	result, err := sendHTTPRequest(student, endpoint, http.MethodPut, jwt.(string))
 	if result.Error != "" {
 		clearJWT(c)
-		loginregister.SetError(c, "loginError", loginregister.Result{
-			Message: "Należy się zalogować",
-		}, "/"+language+"/register/")
+		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
+		c.Redirect(302, "/"+language+"/register/")
 		return
 	}
 	if err != nil {
-		loginregister.SetError(c, "editError", result, "/"+language+"/editstudentform/"+studentIDString)
+		loginregister.SetError(c, "editError", "EditError")
+		c.Redirect(302, "/"+language+"/editstudentform/"+studentIDString+"/")
 		return
 	}
 

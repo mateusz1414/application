@@ -5,32 +5,39 @@ import (
 	"application/studentsactions"
 	"fmt"
 	"strconv"
-	"strings"
 
 	"github.com/gin-gonic/gin"
 	ginsession "github.com/go-session/gin-session"
 )
 
-func getLoginError(c *gin.Context) (returnMessage string) {
+func getLoginError(c *gin.Context) (returnMessageFirst string, returnMessageSecond string) {
 	store := ginsession.FromContext(c)
-	message, ok := store.Get("loginError")
-	if !ok {
-		return ""
+	messageFirst, ok := store.Get("LoginErrorFirst")
+	if ok {
+		returnMessageFirst = messageFirst.(string)
 	}
-	returnMessage = message.(string)
-	store.Delete("loginError")
-	return returnMessage
+	messageSecond, ok := store.Get("LoginErrorSecond")
+	if ok {
+		returnMessageSecond = messageSecond.(string)
+	}
+	store.Delete("LoginErrorFirst")
+	store.Delete("LoginErrorSecond")
+	return returnMessageFirst, returnMessageSecond
 }
 
-func getRegisterError(c *gin.Context) (returnMessage string) {
+func getRegisterError(c *gin.Context) (returnMessageFirst string, returnMessageSecond string) {
 	store := ginsession.FromContext(c)
-	message, ok := store.Get("registerError")
-	if !ok {
-		return ""
+	messageFirst, ok := store.Get("RegisterErrorFirst")
+	if ok {
+		returnMessageFirst = messageFirst.(string)
 	}
-	returnMessage = message.(string)
-	store.Delete("registerError")
-	return returnMessage
+	messageSecond, ok := store.Get("RegisterErrorSecond")
+	if ok {
+		returnMessageSecond = messageSecond.(string)
+	}
+	store.Delete("RegisterErrorFirst")
+	store.Delete("RegisterErrorSecond")
+	return returnMessageFirst, returnMessageSecond
 }
 
 //ShowStudents page with table of students
@@ -99,12 +106,16 @@ func RegisterStudents(c *gin.Context) {
 		c.Redirect(302, "/"+language+"/")
 		return
 	}
+	firstMessageRegisterError, secondMessageRegisterError := getRegisterError(c)
+	firstMessageLoginError, secondMessageLoginError := getLoginError(c)
 	c.HTML(200, "contents/register", gin.H{
-		"isLogined":     false,
-		"loginError":    strings.Split(getLoginError(c), "\n"),
-		"registerError": strings.Split(getRegisterError(c), "\n"),
-		"language":      language,
-		"translation":   translation.(map[string]string),
+		"isLogined":           false,
+		"loginErrorFirst":     firstMessageLoginError,
+		"loginErrorSecond":    secondMessageLoginError,
+		"registerErrorFirst":  firstMessageRegisterError,
+		"registerErrorSecond": secondMessageRegisterError,
+		"language":            language,
+		"translation":         translation.(map[string]string),
 	})
 }
 

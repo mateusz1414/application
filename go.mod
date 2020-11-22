@@ -11,5 +11,5 @@ require (
 	github.com/kataras/i18n v0.0.5 // indirect
 	github.com/nicksnyder/go-i18n v1.10.1
 	github.com/nicksnyder/go-i18n/v2 v2.1.1
-	golang.org/x/text v0.3.3
+	golang.org/x/text v0.3.4
 )

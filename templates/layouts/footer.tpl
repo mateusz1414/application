@@ -1,6 +1,6 @@
 <footer>
     <div class="page-footer">
-        MAINE STOPA 
+        {{index .translation "DisplayFooter"}}
         
     </div>
 </footer>

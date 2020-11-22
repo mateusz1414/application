@@ -3,32 +3,32 @@
     <table class="content-table">
         <thead>
             <tr>
-                <th>Imie:</th>
+                <th>{{index .translation "DisplayName"}}:</th>
                 <td><input type="text" name="studentFirstName"></td>
             </tr>
             <tr>
-                <th>Nazwisko:</th>
+                <th>{{index .translation "DisplayLastName"}}:</th>
                 <td><input type="text" name="studentLastName"></td>
             </tr>
             <tr>
-                <th>Data urodzenia:</th>
+                <th>{{index .translation "DisplayDateOfBirth"}}:</th>
                 <td><input type="date" name="studentDateOfBrith"></td>
             </tr>
             <tr>
-                <th>Wydział:</th>
+                <th>{{index .translation "DisplayDepartment"}}:</th>
                 <td><input type="text" name="studentFaciulty"></td>
             </tr>
             <tr>
-                <th>Płeć:</th>
+                <th>{{index .translation "DisplayGender"}}:</th>
                 <td>
                     <select name="studentGender">
-                        <option value="0">Mężczyzna</option>
-                        <option value="1">Kobieta</option>
+                        <option value="0">{{index .translation "DisplaySelectMen"}}</option>
+                        <option value="1">{{index .translation "DisplaySelectWomen"}}</option>
                     </select>
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: center;"><button>DODAJ</button></td>
+                <td colspan="2" style="text-align: center;"><button>{{index .translation "DisplayAdd"}}</button></td>
             </tr>
         </thead>
     </table>
