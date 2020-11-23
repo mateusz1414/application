@@ -5,7 +5,6 @@ import (
 	"application/pages"
 	"application/studentsactions"
 	"application/translation"
-	"fmt"
 	"os"
 	"strings"
 
@@ -33,24 +32,25 @@ func main() {
 	server.Static("/assets", "./assets/css")
 	server.Use(ginsession.New())
 	//	server.Use(translations())
-	defaultLanguage := server.Group("/")
-	{
-		defaultLanguage.Use(setLanguage("", bundle))
-		direct(defaultLanguage)
-		/*		defaultLanguage.GET("/", func(c *gin.Context) {
-				c.JSON(200, gin.H{
-					"hello": "world",
+	server.Use(getLanguage(bundle))
+	/*	defaultLanguage := server.Group("/")
+		{
+			defaultLanguage.Use(setLanguage("", bundle))
+			direct(defaultLanguage)
+			/*		defaultLanguage.GET("/", func(c *gin.Context) {
+					c.JSON(200, gin.H{
+						"hello": "world",
+					})
 				})
-			})*/
-	}
+		}/*/
 	polish := server.Group("pl")
 	{
-		polish.Use(setLanguage("pl", bundle))
+		//polish.Use(setLanguage("pl", bundle))
 		direct(polish)
 	}
 	english := server.Group("en")
 	{
-		english.Use(setLanguage("en", bundle))
+		//english.Use(setLanguage("en", bundle))
 		direct(english)
 	}
 	/*	server.GET("/", pages.ShowStudents)
@@ -152,9 +152,33 @@ func setLanguage(language string, bundle *i18n.Bundle) gin.HandlerFunc {
 
 func getLanguage(bundle *i18n.Bundle) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		languages := c.GetHeader("Accept-Language")
+		directores := strings.Split(c.Request.URL.Path, "/")
+		language := directores[1]
+		if !isAccepted(language) {
+			language = ""
+			accept := c.GetHeader("Accept-Language")
+			acceptArray := strings.Split(accept, ",")
+			for i := 1; i < len(acceptArray); i++ {
+				lang := strings.Split(acceptArray[i], ";")
+				if isAccepted(lang[0]) {
+					language = lang[0]
+					break
+				}
+			}
+			if language == "" {
+				language = "en"
+			}
+			c.Redirect(302, "/"+language+c.Request.URL.Path)
+			return
+		}
+		localizer := i18n.NewLocalizer(bundle, language)
+		//fmt.Println(*localizer)
+		c.Set("translation", translation.LoadTranslation(localizer))
+		c.Set("language", language)
+		c.Next()
+		//languages := c.GetHeader("Accept-Language")
 		//localizer := i18n.NewLocalizer(bundle, "", languages)
-		fmt.Println(language.ParseAcceptLanguage(languages))
+		//fmt.Println(language.ParseAcceptLanguage(languages))
 		//c.Set("language", language)
 		//c.Next()
 	}
