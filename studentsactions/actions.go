@@ -30,6 +30,7 @@ type Results struct {
 	ErrorCode    string    `json:"ErrorCode"`
 }
 
+//StudentsList return list of students in API
 func StudentsList() ([]Student, error) {
 	result := Results{}
 	endpoint := "https://studenci.herokuapp.com/student"
@@ -107,10 +108,6 @@ func sendHTTPRequest(student Student, endpoint string, method string, jwt string
 func clearJWT(c *gin.Context) {
 	store := ginsession.FromContext(c)
 	store.Delete("jwt")
-	/*	store.Save()
-		a, n := store.Get("jwt")
-		fmt.Println(a)
-		fmt.Println(n)*/
 }
 
 //AddStudent add student to database

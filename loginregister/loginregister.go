@@ -10,12 +10,14 @@ import (
 	ginsession "github.com/go-session/gin-session"
 )
 
+//User data about user
 type User struct {
 	Login           string `json:"login"`
 	Password        string `json:"password"`
 	ConfirmPassword string `json:"confirmpassword"`
 }
 
+//Result is return message from API
 type Result struct {
 	Status     int    `json:"Status"`
 	Message    string `json:"Message"`
@@ -25,6 +27,7 @@ type Result struct {
 	Error      string `json:"Error"`
 }
 
+//IsLogined check if token is in session
 func IsLogined(c *gin.Context) bool {
 	store := ginsession.FromContext(c)
 	_, ok := store.Get("jwt")
@@ -35,6 +38,7 @@ func IsLogined(c *gin.Context) bool {
 
 }
 
+//GetLanguage return actual language
 func GetLanguage(c *gin.Context) string {
 	language, ok := c.Get("language")
 	if !ok {
@@ -43,7 +47,7 @@ func GetLanguage(c *gin.Context) string {
 	return language.(string)
 }
 
-func (u *User) GetPostInformation(c *gin.Context) int {
+func (u *User) getPostInformation(c *gin.Context) int {
 	var ok bool
 	count := 0
 	u.Login, ok = c.GetPostForm("user")
@@ -61,7 +65,7 @@ func (u *User) GetPostInformation(c *gin.Context) int {
 	return count
 }
 
-func SendHttpRequest(user User, endpoint string) (Result, error) {
+func sendHTTPRequest(user User, endpoint string) (Result, error) {
 
 	res := Result{}
 	jsonReq, err := json.Marshal(user)
@@ -86,6 +90,7 @@ func SendHttpRequest(user User, endpoint string) (Result, error) {
 	return res, nil
 }
 
+//SetError save error in session
 func SetError(c *gin.Context, key string, value string) {
 	store := ginsession.FromContext(c)
 	store.Set(key, value)
@@ -106,6 +111,7 @@ func setErrorMessage(errorCode string) string {
 	return ""
 }
 
+//Login login user in API
 func Login(c *gin.Context) {
 	language := GetLanguage(c)
 	redirectURL := "/" + language + "/register/"
@@ -115,13 +121,13 @@ func Login(c *gin.Context) {
 		return
 	}
 	user := User{}
-	count := user.GetPostInformation(c)
+	count := user.getPostInformation(c)
 	if count != 1 {
 		c.Redirect(302, redirectURL)
 		return
 	}
 	endpoint := "http://studenci.herokuapp.com/user/login"
-	res, err := SendHttpRequest(user, endpoint)
+	res, err := sendHTTPRequest(user, endpoint)
 	if err != nil {
 		SetError(c, "LoginErrorFirst", "LoginFailed")
 		SetError(c, "LoginErrorSecond", "IncorrectLoginOrPassword")
@@ -147,6 +153,7 @@ func Login(c *gin.Context) {
 
 }
 
+//Register register user in API
 func Register(c *gin.Context) {
 	language := GetLanguage(c)
 	redirectURL := "/" + language + "/register/"
@@ -156,13 +163,13 @@ func Register(c *gin.Context) {
 		return
 	}
 	user := User{}
-	count := user.GetPostInformation(c)
+	count := user.getPostInformation(c)
 	if count != 0 {
 		c.Redirect(302, "/"+language+"/")
 		return
 	}
 	endpoint := "http://studenci.herokuapp.com/user/register/"
-	res, err := SendHttpRequest(user, endpoint)
+	res, err := sendHTTPRequest(user, endpoint)
 	if err != nil {
 		SetError(c, "RegisterErrorFirst", "RegistrationFailed")
 		SetError(c, "RegisterErrorSecond", setErrorMessage(res.ErrorCode))
