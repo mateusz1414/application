@@ -11,6 +11,7 @@ $(()=> {
     if($('.add-form').length){
         addStudent();
     }
+    
 });
 
 function loadStudents(fun,id,contentTable){
@@ -103,7 +104,9 @@ function getSession(key,callback,student,method){
             callback(response[key],student,method)
         }else
         {
-           //problem z zalogowaniem
+            showError("Nie jesteś zalogowany","",()=>{
+                $(location).prop('href', 'http://localhost:8080/pl/register/');
+            });
         }
     }
     XHR.open("GET",config.serverAddress+'session/'+key);
@@ -165,4 +168,25 @@ function addStudent(){
         }
         getSession("jwt",actionStudent,student,"POST");
     })
+}
+
+function showError(message1,message2,callback){
+    $('body').append('<div id="widok"></div>');
+    $('body').append('<div id="err"></div>');
+    var paragraph = $('<p>',{
+        text: message1,
+        class: "errorFirst"
+    });
+    $('#err').append(paragraph);
+    paragraph = $('<p>',{
+        text: message2,
+        class: "errorSecond"
+    });
+    $('#err').append(paragraph);
+    $("#err").animate({
+        width:"25%",
+        height:"25%",
+        fontSize:"24px",
+    }, 500);
+    $('#widok').click(callback)
 }
