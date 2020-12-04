@@ -69,8 +69,6 @@ function createRow(contentTable,student,index){
         var a = $('<a>');
         var url = $(location).attr('pathname')
         var language = url.split("/")[1];
-        //a.attr('href','/'+language+'/editstudentform/'+student['studentID']+'/');
-        //sprawdzenie czy jesy zalogowany
         td.append(a);
         var button = $('<button>').text('Edytuj');
         button.on('click',()=>{
@@ -88,9 +86,6 @@ function createRow(contentTable,student,index){
         button.on('click',()=>{
             getSession("jwt",actionStudent,student,'DELETE')
             //napraw api jak nie znajdzie nie ma wywalac error
-         //   url = 'http://34.89.252.178:8081/student/'+id;
-            var XHR = new XMLHttpRequest;
-          //  XHR.open("DELETE",url);
         });
     }
         
@@ -100,13 +95,18 @@ function getSession(key,callback,student,method){
     var XHR = new XMLHttpRequest;
     XHR.onload = () => {
         if(XHR.status==200){
+            console.log(XHR.response)
             var response = JSON.parse(XHR.response);
-            callback(response[key],student,method)
+            if(response[key]==null){
+                showError("Nie jesteś zalogowany","Kliknij poza okno aby się zalogować",()=>{
+                    $(location).prop('href', 'http://localhost:8080/pl/register/');
+                });
+                return
+            }
+            callback(response[key],student,method);
         }else
         {
-            showError("Nie jesteś zalogowany","",()=>{
-                $(location).prop('href', 'http://localhost:8080/pl/register/');
-            });
+            showError("Upps","Coś poszło nie tak");
         }
     }
     XHR.open("GET",config.serverAddress+'session/'+key);
@@ -114,16 +114,20 @@ function getSession(key,callback,student,method){
 }
 
 function actionStudent(jwt,student,method){
-    console.log(jwt);
     var XHR = new XMLHttpRequest;
     XHR.onload=() =>{
+        console.log(XHR.response);
         if(XHR.status == 200){
              console.log(XHR.response);
         }else
+        if(XHR.status == 401){
+            showError("Twoja sesja wygasła","Kliknij poza okno aby się zalogować",()=>{
+                $(location).prop('href', 'http://localhost:8080/pl/register/');
+            });
+        }
+        else
         {
-            console.log(XHR.response);
-            //problem
-           // console.log("cos");
+            showError("Wystąpił problem serwera","Prosimy spróbować ponownie");
         }
     }
     if(method == 'POST'){
@@ -134,7 +138,6 @@ function actionStudent(jwt,student,method){
     }
     XHR.setRequestHeader('Authorization','Bearer '+jwt);
     XHR.setRequestHeader("Content-Type", "application/json");
-    console.log(JSON.stringify(student));
     XHR.send(JSON.stringify(student));
 
 }
@@ -188,5 +191,9 @@ function showError(message1,message2,callback){
         height:"25%",
         fontSize:"24px",
     }, 500);
-    $('#widok').click(callback)
+    $('#widok').click(()=>{
+        $('#widok').remove();
+        $('#err').remove();
+        callback();
+    })
 }

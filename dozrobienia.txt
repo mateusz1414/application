@@ -7,4 +7,3 @@ obsługa błędó xhr
 api jak podasz inną nazwe niz getAll
 api problem z update
 api problem z delete
-sprawdzenie czy jest zalogowany przy kliknięciu edit button
