@@ -1,5 +1,5 @@
 {{define "content"}}
-<table class="content-table">
+<table class="content-table student-table">
     {{index .translation "h1Banner"}}
     <thead>
         <tr>
@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        {{$displayselectmen:=index .translation "DisplaySelectMen"}}
+       <!-- {{$displayselectmen:=index .translation "DisplaySelectMen"}}
         {{$displayselectwomen:=index .translation "DisplaySelectWomen"}}
         {{ range $index,$value :=.studentsList}}
         <tr>
@@ -23,7 +23,7 @@
             <td>{{.StudentFaciulty}}</td>
             <td>{{if eq .StudentGender "0"}}{{$displayselectmen}}{{else}}{{$displayselectwomen}}{{end}}</td>
         </tr>
-        {{end}}
+        {{end}}-->
     </tbody>
 </table>
 {{end}}

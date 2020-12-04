@@ -1,5 +1,5 @@
 {{define "content"}}
-<table class="content-table">
+<table class="content-table student-table">
     <thead>
         <tr>
             <th>{{index .translation "Display#"}}</th>
@@ -8,11 +8,11 @@
             <th>{{index .translation "DisplayDateOfBirth"}}</th>
             <th>{{index .translation "DisplayDepartment"}}</th>
             <th>{{index .translation "DisplayGender"}}</th>
-            <th>{{index .translation "DisplayDelete"}}</th>
+            <th class="thDelButton">{{index .translation "DisplayDelete"}}</th>
         </tr>
     </thead>
     <tbody>
-        {{$displaydelete:=index .translation "DisplayDelete"}}
+        <!--{{$displaydelete:=index .translation "DisplayDelete"}}
         {{$displayselectmen:=index .translation "DisplaySelectMen"}}
         {{$displayselectwomen:=index .translation "DisplaySelectWomen"}}
         {{$language:=.language}}
@@ -26,7 +26,7 @@
             <td>{{if eq .StudentGender "0"}}{{$displayselectmen}}{{else}}{{$displayselectwomen}}{{end}}</td>
             <td><a href="/{{$language}}/action/del/{{.StudentID}}"><button>{{$displaydelete}}</button></a></td>
         </tr>
-        {{end}}
+        {{end}}-->
 
     </tbody>
 </table>

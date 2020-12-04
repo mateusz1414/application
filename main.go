@@ -11,11 +11,14 @@ import (
 	"github.com/BurntSushi/toml"
 
 	gintemplate "github.com/foolin/gin-template"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	ginsession "github.com/go-session/gin-session"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
+
+var serverAddress = "http://localhost:8080"
 
 func main() {
 	bundle := i18n.NewBundle(language.English)
@@ -29,8 +32,13 @@ func main() {
 		Partials:     []string{"page-aside/rightpanel"},
 		DisableCache: false,
 	})
-	server.Static("/assets", "./assets/css")
+	server.Static("/css", "./assets/css")
+	server.Static("/js", "./assets/js")
 	server.Use(ginsession.New())
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{serverAddress}
+	server.Use(cors.New(config))
+	server.GET("session/:key", studentsactions.GetSession)
 	server.Use(getLanguage(bundle))
 	polish := server.Group("pl")
 	{
@@ -72,13 +80,13 @@ func direct(language *gin.RouterGroup) {
 		user.POST("/register/", loginregister.Register)
 		user.POST("/login/", loginregister.Login)
 	}
-	studentaction := language.Group("action")
-	{
-		studentaction.Use(loginCheck())
-		studentaction.POST("/add/", studentsactions.AddStudent)
-		studentaction.GET("/del/:studentID", studentsactions.DelStudent)
-		studentaction.POST("/edit/", studentsactions.EditStudent)
-	}
+	/*	studentaction := language.Group("action")
+		{
+			studentaction.Use(loginCheck())
+			studentaction.POST("/add/", studentsactions.AddStudent)
+			studentaction.GET("/del/:studentID", studentsactions.DelStudent)
+			studentaction.POST("/edit/", studentsactions.EditStudent)
+		}*/
 }
 
 func getLanguage(bundle *i18n.Bundle) gin.HandlerFunc {

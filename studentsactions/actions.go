@@ -1,13 +1,6 @@
 package studentsactions
 
 import (
-	"application/loginregister"
-	"bytes"
-	"encoding/json"
-	"fmt"
-	"net/http"
-	"strconv"
-
 	"github.com/gin-gonic/gin"
 	ginsession "github.com/go-session/gin-session"
 )
@@ -30,6 +23,7 @@ type Results struct {
 	ErrorCode    string    `json:"ErrorCode"`
 }
 
+/*
 //StudentsList return list of students in API
 func StudentsList() ([]Student, error) {
 	result := Results{}
@@ -203,4 +197,16 @@ func EditStudent(c *gin.Context) {
 
 	c.Redirect(302, "/"+language+"/")
 
+}
+
+
+//GetSession return session data*/
+func GetSession(c *gin.Context) {
+	key := c.Param("key")
+	store := ginsession.FromContext(c)
+	value, _ := store.Get(key)
+	//	a, _ := store.Get("jwt")
+	c.JSON(200, gin.H{
+		key: value,
+	})
 }

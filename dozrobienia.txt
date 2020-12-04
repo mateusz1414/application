@@ -1,0 +1,10 @@
+tabla musi mieć stałą szerokość
+table marginesy
+kółko ładowania
+kolejne table
+logowanie, rejestracja
+obsługa błędó xhr
+api jak podasz inną nazwe niz getAll
+api problem z update
+api problem z delete
+sprawdzenie czy jest zalogowany przy kliknięciu edit button
