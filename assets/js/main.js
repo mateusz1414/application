@@ -11,7 +11,12 @@ $(()=> {
     if($('.add-form').length){
         addStudent();
     }
-    
+    if($('.registerButton').length){
+        loginRegister('register');
+    }
+    if($('.loginButton')){
+        loginRegister('login');
+    }
 });
 
 function loadStudents(fun,id,contentTable){
@@ -113,6 +118,23 @@ function getSession(key,callback,student,method){
     XHR.send();
 }
 
+function setSession(key,value){
+    var XHR = new XMLHttpRequest; 
+    XHR.onload = () => {
+        if(XHR.status==200){
+            console.log(XHR.response);
+        }else
+        {
+            showError("Upps","Coś poszło nie tak");
+        }
+    }
+    XHR.open("POST",config.serverAddress+'session/');
+    console.log(JSON.stringify(session));
+    XHR.send(JSON.stringify({
+        [key]:value
+    }));
+}
+
 function actionStudent(jwt,student,method){
     var XHR = new XMLHttpRequest;
     XHR.onload=() =>{
@@ -196,4 +218,42 @@ function showError(message1,message2,callback){
         $('#err').remove();
         callback();
     })
+}
+
+function send(user,action,ifFalse,ifTrue){
+    var XHR = new XMLHttpRequest;
+    XHR.onload = ()=>{
+        var response = JSON.parse(XHR.response); 
+        if(XHR.status==200){
+            ifTrue('jwt',response.AuthToken);
+           // location.reload();
+        }else
+        {
+            ifFalse(response,action);
+        }
+    };
+    XHR.open('POST',config.apiAddress+'user/'+action);
+    XHR.setRequestHeader("Content-Type", "application/json");
+    XHR.send(JSON.stringify(user))
+
+}
+
+function loginRegister(what){
+    $('.'+what+'Button').on('click',() =>{
+        user = {
+            login:  $('.'+what+'User').val(),
+            password: $('.'+what+'Password').val(),
+            confirmpassword: $('.'+what+'ConfirmPassword').val(),
+        };
+        if(what=='login'){
+            send(user,what,sendMessage,setSession);
+        }else
+            send(user,what,sendMessage);
+    });
+}
+
+
+function sendMessage(response,action){
+    $('.'+action+'MessageFirst').text(response.Message);
+    $('.'+action+'MessageSecond').text(response.ErrorCode);
 }

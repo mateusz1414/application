@@ -1,33 +1,23 @@
 {{define "content"}}
-{{if .registerErrorFirst}}
-<p class="errors">
-{{index .translation .registerErrorFirst}}
-</p>
-{{end}}
-{{if .registerErrorSecond}}
-<p class="errors">
-{{index .translation .registerErrorSecond}}
-</p>
-{{end}}
+<p class="errors registerMessageFirst"></p>
+<p class="errors registerMessageSecond"></p>
 <table class="content-table">
-<form action="/{{.language}}/user/register/" method="POST">
     <thead>
         <tr>
             <th>{{index .translation "DisplayLogin"}}:</th>
-            <td><input type="text" name="user"></td>
+            <td><input type="text" class="registerUser"></td>
         </tr>
         <tr>
             <th>{{index .translation "DisplayPassword"}}:</th>
-            <td><input type="password" name="password"></td>
+            <td><input type="password" class="registerPassword"></td>
         </tr>
         <tr>
             <th>{{index .translation "DisplayConfirmPassword"}}:</th>
-            <td><input type="password" name="confirmpassword"></td>
+            <td><input type="password" class="registerConfirmPassword"></td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align: center;"><button>{{index .translation "DisplayRegister"}}</button></td>
+            <td colspan="2" style="text-align: center;"><button class="registerButton">{{index .translation "DisplayRegister"}}</button></td>
         </tr>
     </thead>
-    </form>
 </table>
 {{end}}

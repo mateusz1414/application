@@ -3,32 +3,26 @@
 {{index .translation "DisplayLogged"}}
 {{else}}
 {{index .translation "DisplayLoginIn"}}</br>
-{{if .loginErrorFirst}}
-<p class="errors">
+<p class="errors loginMessageFirst">
 {{index .translation .loginErrorFirst}}
 </p>
-{{end}}
-{{if .loginErrorSecond}}
-<p class="errors">
+<p class="errors loginMessageSecond">
 {{index .translation .loginErrorSecond}}
 </p>
-{{end}}
 <table class="login-table">
-<form action="/{{.language}}/user/login/" method="POST">
     <thead>
         <tr>
             <th>{{index .translation "DisplayLogin"}}:</th>
-            <td><input type="text" name="user"></td>
+            <td><input type="text" class="loginUser"></td>
         </tr>
         <tr>
             <th>{{index .translation "DisplayPassword"}}:</th>
-            <td><input type="password" name="password"></td>
+            <td><input type="password" class="loginPassword"></td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align: center;"><button>{{index .translation "DisplayLoginIn"}}</button></td>
+            <td colspan="2" style="text-align: center;"><button class="loginButton">{{index .translation "DisplayLoginIn"}}</button></td>
         </tr>
     </thead>
-    </form>
 </table>
 {{end}}
 {{end}}
