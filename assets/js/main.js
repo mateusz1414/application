@@ -1,4 +1,3 @@
-
 $(()=> {
     if($('.student-table').length){
         loadStudents(createRow,"getAll",$('.student-table'),);

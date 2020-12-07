@@ -1,5 +1,5 @@
 {{define "content"}}  
-<table class="content-table add-form">
+<table class="content-table add-form short-table">
     <thead>
         <tr>
             <th>{{index .translation "DisplayName"}}:</th>

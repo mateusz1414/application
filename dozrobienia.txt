@@ -1,6 +1,0 @@
-tabla musi mieć stałą szerokość
-table marginesy
-kółko ładowania
-kolejne table
-logowanie, rejestracja
-api jak podasz inną nazwe niz getAll

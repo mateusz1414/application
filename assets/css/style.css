@@ -103,10 +103,11 @@ footer{
 }
 
 .content-table{
-    margin-left:15%;
+    margin:auto;
     border-collapse: collapse;
     font-size: 90%;
     min-width: 40%;
+    width:80%;
     border-radius: 5px 5px 0 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -136,6 +137,10 @@ footer{
     border-bottom: 2px solid #009879;
 }
 
+.short-table{
+	width: 40%;
+}
+
 .login-table{
     margin: 10% 2%;
     border-collapse: collapse;
@@ -163,7 +168,6 @@ footer{
     text-align: center;
     border-bottom: 1px solid rgba(34, 58, 25, 0.15);
 }
-
 #err{
     width:1%;
     height:1%;
@@ -179,8 +183,9 @@ footer{
     right:0;
     margin:auto;
     box-shadow:0 0 4px 4px black;
-    }
-    #widok{
+}
+
+#widok{
       width:100%;
       height:100%; 
       position:absolute;
@@ -188,13 +193,14 @@ footer{
       left:0;
       background-color: black;
       opacity: 0.5;
-    }
+ }
 
-    .errorFirst{
+.errorFirst{
         font-size: 110%;
         padding-bottom:5%;
     }
-    .errorSecond{
+
+ .errorSecond{
         font-size: 90%;
 
     }

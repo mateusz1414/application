@@ -1,4 +1,3 @@
-
 {{define "content"}}
 <table class="content-table edit-form">
     <thead>

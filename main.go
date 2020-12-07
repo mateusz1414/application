@@ -80,13 +80,13 @@ func direct(language *gin.RouterGroup) {
 		user.POST("/register/", loginregister.Register)
 		user.POST("/login/", loginregister.Login)
 	}
-	/*	studentaction := language.Group("action")
-		{
-			studentaction.Use(loginCheck())
-			studentaction.POST("/add/", studentsactions.AddStudent)
-			studentaction.GET("/del/:studentID", studentsactions.DelStudent)
-			studentaction.POST("/edit/", studentsactions.EditStudent)
-		}*/
+	/*studentaction := language.Group("action")
+	{
+		studentaction.Use(loginCheck())
+		studentaction.POST("/add/", studentsactions.AddStudent)
+		studentaction.GET("/del/:studentID", studentsactions.DelStudent)
+		studentaction.POST("/edit/", studentsactions.EditStudent)
+	}*/
 }
 
 func getLanguage(bundle *i18n.Bundle) gin.HandlerFunc {

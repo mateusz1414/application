@@ -1,7 +1,7 @@
 {{define "content"}}
 <p class="errors registerMessageFirst"></p>
 <p class="errors registerMessageSecond"></p>
-<table class="content-table">
+<table class="content-table short-table">
     <thead>
         <tr>
             <th>{{index .translation "DisplayLogin"}}:</th>

@@ -1,0 +1,333 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /pl/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /pl/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /pl/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /pl/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /pl/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /pl/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /pl/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /pl/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] GET    /en/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /en/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /en/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /en/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /en/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /en/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /en/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /en/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /en/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /en/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2020/12/03 - 14:38:53 | 302 |      265.68µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 14:38:53 | 200 |  223.582293ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/03 - 14:38:53 | 304 |    1.577767ms |  178.19.179.234 | GET      "/assets/style.css"
+[GIN] 2020/12/03 - 14:38:55 | 200 |    6.216101ms |  178.19.179.234 | GET      "/pl/addstudents/"
+[GIN] 2020/12/03 - 14:38:57 | 200 |   28.045563ms |  178.19.179.234 | GET      "/pl/register/"
+[GIN] 2020/12/03 - 14:38:58 | 200 |  157.638389ms |  178.19.179.234 | GET      "/pl/editstudents/"
+[GIN] 2020/12/03 - 14:38:58 | 200 |     410.691µs |  178.19.179.234 | GET      "/pl/register/"
+[GIN] 2020/12/03 - 14:41:01 | 302 |     118.431µs |   125.161.7.152 | GET      "/"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /pl/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /pl/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /pl/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /pl/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /pl/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /pl/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /pl/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /pl/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] GET    /en/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /en/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /en/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /en/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /en/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /en/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /en/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /en/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /en/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /en/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+signal: interrupt
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /pl/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /pl/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /pl/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /pl/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /pl/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /pl/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /pl/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /pl/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] GET    /en/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /en/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /en/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /en/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /en/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /en/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /en/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /en/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /en/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /en/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2020/12/03 - 14:49:01 | 302 |     381.308µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 14:49:01 | 200 |  267.022051ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/03 - 14:49:01 | 304 |    1.561049ms |  178.19.179.234 | GET      "/assets/style.css"
+[GIN] 2020/12/03 - 14:51:26 | 302 |     113.049µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 14:51:26 | 200 |  145.501726ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/03 - 14:51:26 | 304 |     103.722µs |  178.19.179.234 | GET      "/assets/style.css"
+[GIN] 2020/12/03 - 15:59:55 | 302 |     117.624µs |   187.87.199.74 | GET      "/"
+[GIN] 2020/12/03 - 16:58:48 | 302 |     115.007µs |    2.57.122.186 | GET      "/config/getuser?index=0"
+[GIN] 2020/12/03 - 17:31:05 | 302 |     153.411µs |     5.173.0.195 | GET      "/"
+[GIN] 2020/12/03 - 17:31:12 | 302 |     212.265µs |     5.173.0.195 | GET      "/"
+[GIN] 2020/12/03 - 17:31:13 | 200 |  7.337315996s |     5.173.0.195 | GET      "/pl/"
+[GIN] 2020/12/03 - 17:31:13 | 200 |   39.642989ms |     5.173.0.195 | GET      "/assets/style.css"
+[GIN] 2020/12/03 - 17:31:13 | 302 |     176.264µs |     5.173.0.195 | GET      "/favicon.ico"
+[GIN] 2020/12/03 - 17:31:13 | 404 |     255.428µs |     5.173.0.195 | GET      "/pl/favicon.ico"
+[GIN] 2020/12/03 - 17:45:06 | 302 |     192.785µs |   14.253.175.84 | GET      "/"
+[GIN] 2020/12/03 - 18:00:06 | 302 |      133.32µs |   200.53.28.196 | GET      "/"
+[GIN] 2020/12/03 - 18:50:08 | 302 |     127.609µs |     83.97.20.29 | GET      "/"
+[GIN] 2020/12/03 - 18:50:09 | 200 |  148.846588ms |     83.97.20.29 | GET      "/en/"
+[GIN] 2020/12/03 - 19:11:23 | 302 |     121.572µs |   209.17.96.186 | GET      "/"
+[GIN] 2020/12/03 - 19:48:23 | 302 |     145.039µs |   209.141.56.78 | GET      "/manager/html"
+[GIN] 2020/12/03 - 19:55:32 | 302 |     183.417µs |  107.179.35.246 | GET      "/?r=_417944893829158743742288"
+[GIN] 2020/12/03 - 19:55:37 | 200 |  5.323400759s |  107.179.35.246 | GET      "/en/"
+[GIN] 2020/12/03 - 19:55:38 | 302 |     153.668µs |  107.179.35.246 | GET      "/?r=_70654109324547761058080"
+[GIN] 2020/12/03 - 19:55:38 | 200 |    65.70457ms |  107.179.35.246 | GET      "/en/"
+[GIN] 2020/12/03 - 20:25:39 | 302 |     134.192µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 20:25:39 | 200 |  146.214877ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/03 - 20:25:39 | 304 |     125.515µs |  178.19.179.234 | GET      "/assets/style.css"
+[GIN] 2020/12/03 - 20:25:40 | 302 |     137.271µs |  178.19.179.234 | GET      "/favicon.ico"
+[GIN] 2020/12/03 - 20:25:40 | 404 |     227.707µs |  178.19.179.234 | GET      "/pl/favicon.ico"
+[GIN] 2020/12/03 - 20:32:50 | 302 |     159.055µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 20:32:50 | 302 |     140.075µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 20:32:50 | 200 |   153.07567ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/03 - 20:32:50 | 200 |  137.895294ms |  178.19.179.234 | GET      "/pl/"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /pl/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /pl/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /pl/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /pl/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /pl/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /pl/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /pl/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /pl/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] GET    /en/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /en/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /en/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /en/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /en/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /en/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /en/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /en/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /en/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /en/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [ERROR] listen tcp :8080: bind: address already in use
+[GIN] 2020/12/03 - 20:38:03 | 200 |   154.21576ms |  178.19.179.234 | GET      "/pl/"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /pl/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /pl/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /pl/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /pl/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /pl/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /pl/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /pl/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /pl/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /pl/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /pl/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] GET    /en/                      --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/showstudents/         --> application/pages.ShowStudents (5 handlers)
+[GIN-debug] GET    /en/deletestudents/       --> application/pages.DeleteStudents (5 handlers)
+[GIN-debug] GET    /en/addstudents/          --> application/pages.AddStudents (5 handlers)
+[GIN-debug] GET    /en/editstudents/         --> application/pages.EditStudents (5 handlers)
+[GIN-debug] GET    /en/editstudentform/:studentID/ --> application/pages.EditForm (5 handlers)
+[GIN-debug] GET    /en/register/             --> application/pages.RegisterStudents (5 handlers)
+[GIN-debug] POST   /en/user/register/        --> application/loginregister.Register (5 handlers)
+[GIN-debug] POST   /en/user/login/           --> application/loginregister.Login (5 handlers)
+[GIN-debug] POST   /en/action/add/           --> application/studentsactions.AddStudent (6 handlers)
+[GIN-debug] GET    /en/action/del/:studentID --> application/studentsactions.DelStudent (6 handlers)
+[GIN-debug] POST   /en/action/edit/          --> application/studentsactions.EditStudent (6 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN-debug] [ERROR] listen tcp :8080: bind: address already in use
+[GIN] 2020/12/03 - 20:39:08 | 302 |     147.982µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 20:39:08 | 200 |  156.375945ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/03 - 20:39:08 | 302 |     148.556µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 20:39:09 | 200 |   66.074261ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/03 - 20:39:09 | 302 |     102.377µs |  178.19.179.234 | GET      "/favicon.ico"
+[GIN] 2020/12/03 - 20:39:09 | 404 |     247.453µs |  178.19.179.234 | GET      "/pl/favicon.ico"
+[GIN] 2020/12/03 - 20:43:31 | 302 |     134.216µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 20:43:31 | 200 |  156.170943ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/03 - 20:45:13 | 302 |     143.404µs |   185.128.41.50 | GET      "/manager/html"
+[GIN] 2020/12/03 - 20:45:13 | 404 |       201.7µs |   185.128.41.50 | GET      "/en/manager/html"
+[GIN] 2020/12/03 - 20:59:28 | 302 |     133.026µs |   66.240.205.34 | GET      "/"
+[GIN] 2020/12/03 - 20:59:28 | 200 |  152.444121ms |   66.240.205.34 | GET      "/en/"
+[GIN] 2020/12/03 - 20:59:29 | 302 |     124.922µs |   66.240.205.34 | GET      "/robots.txt"
+[GIN] 2020/12/03 - 20:59:29 | 302 |     125.497µs |   66.240.205.34 | GET      "/sitemap.xml"
+[GIN] 2020/12/03 - 20:59:29 | 302 |     118.962µs |   66.240.205.34 | GET      "/.well-known/security.txt"
+[GIN] 2020/12/03 - 20:59:30 | 302 |      97.349µs |   66.240.205.34 | GET      "/favicon.ico"
+[GIN] 2020/12/03 - 20:59:30 | 404 |     263.758µs |   66.240.205.34 | GET      "/en/favicon.ico"
+[GIN] 2020/12/03 - 20:59:35 | 302 |     115.778µs |   34.78.227.165 | GET      "/"
+[GIN] 2020/12/03 - 21:26:53 | 302 |       169.6µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/03 - 21:26:53 | 200 |  143.060601ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/03 - 21:26:54 | 304 |     140.458µs |  178.19.179.234 | GET      "/assets/style.css"
+[GIN] 2020/12/03 - 21:26:54 | 302 |     145.914µs |  178.19.179.234 | GET      "/favicon.ico"
+[GIN] 2020/12/03 - 21:26:54 | 404 |     258.326µs |  178.19.179.234 | GET      "/pl/favicon.ico"
+[GIN] 2020/12/03 - 21:43:08 | 302 |      131.85µs |   129.28.78.146 | GET      "/TP/public/index.php"
+[GIN] 2020/12/03 - 21:43:09 | 404 |     279.248µs |   129.28.78.146 | GET      "/en/TP/public/index.php"
+[GIN] 2020/12/03 - 21:43:09 | 302 |      134.56µs |   129.28.78.146 | GET      "/TP/index.php"
+[GIN] 2020/12/03 - 21:43:10 | 404 |     258.505µs |   129.28.78.146 | GET      "/en/TP/index.php"
+[GIN] 2020/12/03 - 21:43:11 | 302 |     106.272µs |   129.28.78.146 | GET      "/thinkphp/html/public/index.php"
+[GIN] 2020/12/03 - 21:43:11 | 404 |     340.092µs |   129.28.78.146 | GET      "/en/thinkphp/html/public/index.php"
+[GIN] 2020/12/03 - 21:43:12 | 302 |     111.139µs |   129.28.78.146 | GET      "/html/public/index.php"
+[GIN] 2020/12/03 - 21:43:13 | 404 |     256.943µs |   129.28.78.146 | GET      "/en/html/public/index.php"
+[GIN] 2020/12/03 - 21:43:13 | 302 |     125.884µs |   129.28.78.146 | GET      "/public/index.php"
+[GIN] 2020/12/03 - 21:43:14 | 404 |     338.254µs |   129.28.78.146 | GET      "/en/public/index.php"
+[GIN] 2020/12/03 - 21:43:15 | 302 |      138.66µs |   129.28.78.146 | GET      "/TP/html/public/index.php"
+[GIN] 2020/12/03 - 21:43:15 | 404 |     362.799µs |   129.28.78.146 | GET      "/en/TP/html/public/index.php"
+[GIN] 2020/12/03 - 21:43:16 | 302 |     109.923µs |   129.28.78.146 | GET      "/elrekt.php"
+[GIN] 2020/12/03 - 21:43:17 | 404 |      240.25µs |   129.28.78.146 | GET      "/en/elrekt.php"
+[GIN] 2020/12/03 - 21:43:17 | 302 |      107.69µs |   129.28.78.146 | GET      "/index.php"
+[GIN] 2020/12/03 - 21:43:18 | 404 |     239.933µs |   129.28.78.146 | GET      "/en/index.php"
+[GIN] 2020/12/03 - 21:43:19 | 302 |     195.863µs |   129.28.78.146 | POST     "/users?page=&size=5"
+[GIN] 2020/12/03 - 21:43:19 | 404 |      221.64µs |   129.28.78.146 | GET      "/en/users"
+[GIN] 2020/12/03 - 21:43:20 | 302 |      135.47µs |   129.28.78.146 | GET      "/"
+[GIN] 2020/12/03 - 21:43:21 | 200 |  148.746174ms |   129.28.78.146 | GET      "/en/"
+[GIN] 2020/12/03 - 21:45:44 | 302 |     110.744µs |   191.5.125.140 | GET      "/"
+[GIN] 2020/12/03 - 22:09:06 | 302 |     152.083µs | 205.185.119.203 | GET      "/admin/login.asp"
+[GIN] 2020/12/03 - 22:20:49 | 302 |     113.522µs |   92.118.160.25 | GET      "/"
+[GIN] 2020/12/03 - 22:20:54 | 200 |  5.330096535s |   92.118.160.25 | GET      "/en/"
+[GIN] 2020/12/03 - 22:38:48 | 302 |      164.47µs | 220.132.253.121 | GET      "/"
+[GIN] 2020/12/03 - 22:59:19 | 302 |     169.312µs |   95.170.113.45 | GET      "/"
+[GIN] 2020/12/04 - 00:18:57 | 302 |     142.822µs |   114.35.245.71 | GET      "/"
+[GIN] 2020/12/04 - 00:32:07 | 302 |     165.234µs |  176.85.220.153 | GET      "/"
+[GIN] 2020/12/04 - 01:25:27 | 302 |     130.674µs |  128.14.134.134 | GET      "/"
+[GIN] 2020/12/04 - 01:25:32 | 200 |  4.326064766s |  128.14.134.134 | GET      "/en/"
+[GIN] 2020/12/04 - 01:35:32 | 302 |     120.888µs |   78.189.15.223 | GET      "/"
+[GIN] 2020/12/04 - 02:50:09 | 302 |     221.747µs |  219.154.181.97 | GET      "/boaform/admin/formLogin?username=adminisp&psd=adminisp"
+[GIN] 2020/12/04 - 04:02:29 | 302 |     129.554µs | 182.116.104.152 | GET      "/boaform/admin/formLogin?username=adminisp&psd=adminisp"
+[GIN] 2020/12/04 - 05:14:02 | 302 |     112.377µs |    69.162.99.42 | HEAD     "/robots.txt"
+[GIN] 2020/12/04 - 06:53:57 | 302 |     183.397µs |   209.17.96.114 | GET      "/"
+[GIN] 2020/12/04 - 06:54:02 | 200 |   4.34888152s |   209.17.96.114 | GET      "/en/"
+[GIN] 2020/12/04 - 06:55:28 | 302 |     127.928µs | 143.255.243.207 | GET      "/"
+[GIN] 2020/12/04 - 08:15:13 | 302 |     167.418µs |  192.241.235.36 | GET      "/actuator/health"
+[GIN] 2020/12/04 - 08:57:09 | 302 |     124.327µs |   88.231.64.137 | GET      "/"
+[GIN] 2020/12/04 - 09:00:18 | 302 |      119.46µs |    5.173.16.163 | GET      "/"
+[GIN] 2020/12/04 - 09:00:23 | 200 |  5.310438648s |    5.173.16.163 | GET      "/pl/"
+[GIN] 2020/12/04 - 09:00:23 | 304 |      84.147µs |    5.173.16.163 | GET      "/assets/style.css"
+[GIN] 2020/12/04 - 09:00:23 | 302 |       92.44µs |    5.173.16.163 | GET      "/favicon.ico"
+[GIN] 2020/12/04 - 09:00:23 | 404 |     212.708µs |    5.173.16.163 | GET      "/pl/favicon.ico"
+[GIN] 2020/12/04 - 09:33:48 | 302 |     124.509µs | 202.164.138.251 | GET      "/boaform/admin/formLogin?username=admin&psd=admin"
+[GIN] 2020/12/04 - 09:42:11 | 302 |     148.357µs |   128.14.133.58 | GET      "/"
+[GIN] 2020/12/04 - 09:42:11 | 200 |  146.338445ms |   128.14.133.58 | GET      "/en/"
+[GIN] 2020/12/04 - 09:53:26 | 302 |     176.629µs |   196.52.43.129 | GET      "/"
+[GIN] 2020/12/04 - 10:17:33 | 302 |     174.813µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/04 - 10:17:33 | 200 |  141.608065ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/04 - 10:17:33 | 304 |      94.015µs |  178.19.179.234 | GET      "/assets/style.css"
+[GIN] 2020/12/04 - 10:17:34 | 302 |     111.046µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/04 - 10:17:34 | 200 |  131.960589ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/04 - 10:17:34 | 302 |      99.077µs |  178.19.179.234 | GET      "/favicon.ico"
+[GIN] 2020/12/04 - 10:17:34 | 404 |     229.888µs |  178.19.179.234 | GET      "/pl/favicon.ico"
+[GIN] 2020/12/04 - 10:22:06 | 302 |     109.279µs |  167.248.133.38 | GET      "/"
+[GIN] 2020/12/04 - 10:22:07 | 302 |      96.754µs |  167.248.133.38 | GET      "/"
+[GIN] 2020/12/04 - 10:22:07 | 200 |  154.358211ms |  167.248.133.38 | GET      "/en/"
+[GIN] 2020/12/04 - 13:20:33 | 302 |     140.711µs |  128.14.209.226 | GET      "/"
+[GIN] 2020/12/04 - 13:20:34 | 200 |   145.49794ms |  128.14.209.226 | GET      "/en/"
+[GIN] 2020/12/04 - 15:19:26 | 302 |      152.18µs | 167.249.169.245 | GET      "/"
+[GIN] 2020/12/04 - 15:22:57 | 302 |      128.73µs |  192.241.239.68 | GET      "/manager/text/list"
+[GIN] 2020/12/04 - 16:03:15 | 302 |     137.513µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/04 - 16:03:15 | 302 |     107.218µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/04 - 16:03:19 | 200 |  4.405346788s |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/04 - 16:03:20 | 200 |   1.12801687s |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/04 - 16:03:20 | 304 |     147.282µs |  178.19.179.234 | GET      "/assets/style.css"
+[GIN] 2020/12/04 - 16:03:20 | 302 |      106.48µs |  178.19.179.234 | GET      "/favicon.ico"
+[GIN] 2020/12/04 - 16:03:20 | 404 |      248.76µs |  178.19.179.234 | GET      "/pl/favicon.ico"
+[GIN] 2020/12/04 - 16:04:02 | 302 |     149.359µs |   186.225.63.82 | GET      "/"
+[GIN] 2020/12/04 - 16:31:00 | 302 |     125.148µs |  192.241.237.31 | GET      "/manager/html"
+[GIN] 2020/12/04 - 17:20:00 | 302 |     126.691µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/04 - 17:20:03 | 200 |  3.349650346s |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/04 - 17:34:13 | 302 |     126.048µs |    91.241.19.84 | GET      "/"
+[GIN] 2020/12/04 - 17:34:14 | 200 |  146.540777ms |    91.241.19.84 | GET      "/en/"
+[GIN] 2020/12/04 - 17:41:49 | 302 |     198.122µs |   42.224.100.67 | GET      "/boaform/admin/formLogin?username=ec8&psd=ec8"
+[GIN] 2020/12/04 - 17:57:04 | 302 |     128.801µs |   209.141.56.78 | GET      "/manager/html"
+[GIN] 2020/12/04 - 18:16:05 | 200 |  151.282566ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/04 - 18:16:05 | 200 |     163.692µs |  178.19.179.234 | GET      "/assets/style.css"
+[GIN] 2020/12/04 - 18:21:53 | 302 |     147.578µs |    5.173.16.163 | GET      "/"
+[GIN] 2020/12/04 - 18:21:53 | 200 |  139.519277ms |    5.173.16.163 | GET      "/pl/"
+[GIN] 2020/12/04 - 18:21:53 | 200 |     210.814µs |    5.173.16.163 | GET      "/assets/style.css"
+[GIN] 2020/12/04 - 18:23:41 | 302 |     134.249µs |   192.35.168.80 | GET      "/"
+[GIN] 2020/12/04 - 18:23:41 | 200 |  146.032787ms |   192.35.168.80 | GET      "/en/"
+[GIN] 2020/12/04 - 18:28:10 | 302 |     114.032µs |   103.247.14.91 | GET      "/"
+[GIN] 2020/12/04 - 18:50:55 | 302 |     144.423µs |    188.9.114.65 | GET      "/"
+[GIN] 2020/12/04 - 21:18:51 | 302 |     115.904µs |    60.251.123.1 | GET      "/manager/html"
+[GIN] 2020/12/04 - 21:18:51 | 404 |     202.675µs |    60.251.123.1 | GET      "/en/manager/html"
+[GIN] 2020/12/04 - 21:29:35 | 302 |      166.81µs | 190.128.154.222 | HEAD     "/"
+[GIN] 2020/12/04 - 21:29:37 | 302 |     110.762µs | 190.128.154.222 | GET      "/"
+[GIN] 2020/12/04 - 21:52:49 | 302 |     125.132µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/04 - 21:52:50 | 302 |     112.644µs |  178.19.179.234 | GET      "/"
+[GIN] 2020/12/04 - 21:52:53 | 200 |  128.254611ms |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/04 - 21:52:53 | 200 |     176.655µs |  178.19.179.234 | GET      "/assets/style.css"
+[GIN] 2020/12/04 - 21:52:54 | 200 |  4.297822838s |  178.19.179.234 | GET      "/pl/"
+[GIN] 2020/12/04 - 21:52:54 | 302 |      84.197µs |  178.19.179.234 | GET      "/favicon.ico"
+[GIN] 2020/12/04 - 21:52:54 | 404 |     196.633µs |  178.19.179.234 | GET      "/pl/favicon.ico"
+main.go:4:2: invalid input file name "#loginregister.go"
+stat application/main.go: no such file or directory
+stat application/main.go: no such file or directory

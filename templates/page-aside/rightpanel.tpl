@@ -4,10 +4,10 @@
 {{else}}
 {{index .translation "DisplayLoginIn"}}</br>
 <p class="errors loginMessageFirst">
-{{index .translation .loginErrorFirst}}
+
 </p>
 <p class="errors loginMessageSecond">
-{{index .translation .loginErrorSecond}}
+
 </p>
 <table class="login-table">
     <thead>
