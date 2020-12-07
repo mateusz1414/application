@@ -1,3 +1,7 @@
+[AddError]
+hash = "sha1-f2652dc8c84bc253fed4f400166723cf60325726"
+other = "Nie udało się dodać studenta"
+
 ["Display#"]
 hash = "sha1-d08f88df745fa7950b104e4a707a31cfce7b5841"
 other = "Lp."
@@ -70,6 +74,10 @@ other = "Mężczyzna"
 hash = "sha1-3a65e770b28af650164e9f6d344162ce8cde7d15"
 other = "Kobieta"
 
+[EditError]
+hash = "sha1-ed73c65668e89b56893bd26dd27abffb8a1635e1"
+other = "Edycja nie powiodła się"
+
 [H1Banner]
 hash = "sha1-298371317aac7577c4d7e510c3787446e260a961"
 other = "Moja własna aplikacja"
@@ -130,10 +138,6 @@ other = "Poprawnie zarejetrowano"
 hash = "sha1-c7e13050fa9d0e2a21d12b6f6cc655f3751e3dc3"
 other = "Użytkownik już istnieje"
 
-[AddError]
-hash = "sha1-f2652dc8c84bc253fed4f400166723cf60325726"
-other = "Nie udało się dodać studenta"
-
-[EditError]
-hash = "sha1-ed73c65668e89b56893bd26dd27abffb8a1635e1"
-other = "Edycja nie powiodła się"
+[LogoutButton]
+hash = "sha1-e43d612e11f1568f2373e719d4c4b08dcecdc7cc"
+other = "Wyloguj"

@@ -231,5 +231,11 @@ func LoadTranslation(localizer *i18n.Localizer) map[string]string {
 			Other: "Editing has failed",
 		},
 	})
+	translated["LogoutButton"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "LogoutButton",
+			Other: "Logout",
+		},
+	})
 	return translated
 }

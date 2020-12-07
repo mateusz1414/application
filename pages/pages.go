@@ -4,38 +4,7 @@ import (
 	"application/loginregister"
 
 	"github.com/gin-gonic/gin"
-	ginsession "github.com/go-session/gin-session"
 )
-
-func getLoginError(c *gin.Context) (returnMessageFirst string, returnMessageSecond string) {
-	store := ginsession.FromContext(c)
-	messageFirst, ok := store.Get("LoginErrorFirst")
-	if ok {
-		returnMessageFirst = messageFirst.(string)
-	}
-	messageSecond, ok := store.Get("LoginErrorSecond")
-	if ok {
-		returnMessageSecond = messageSecond.(string)
-	}
-	store.Delete("LoginErrorFirst")
-	store.Delete("LoginErrorSecond")
-	return returnMessageFirst, returnMessageSecond
-}
-
-func getRegisterError(c *gin.Context) (returnMessageFirst string, returnMessageSecond string) {
-	store := ginsession.FromContext(c)
-	messageFirst, ok := store.Get("RegisterErrorFirst")
-	if ok {
-		returnMessageFirst = messageFirst.(string)
-	}
-	messageSecond, ok := store.Get("RegisterErrorSecond")
-	if ok {
-		returnMessageSecond = messageSecond.(string)
-	}
-	store.Delete("RegisterErrorFirst")
-	store.Delete("RegisterErrorSecond")
-	return returnMessageFirst, returnMessageSecond
-}
 
 //ShowStudents page with table of students
 func ShowStudents(c *gin.Context) {
@@ -85,16 +54,10 @@ func RegisterStudents(c *gin.Context) {
 		c.Redirect(302, "/"+language+"/")
 		return
 	}
-	firstMessageRegisterError, secondMessageRegisterError := getRegisterError(c)
-	firstMessageLoginError, secondMessageLoginError := getLoginError(c)
 	c.HTML(200, "contents/register", gin.H{
-		"isLogined":           false,
-		"loginErrorFirst":     firstMessageLoginError,
-		"loginErrorSecond":    secondMessageLoginError,
-		"registerErrorFirst":  firstMessageRegisterError,
-		"registerErrorSecond": secondMessageRegisterError,
-		"language":            language,
-		"translation":         translation.(map[string]string),
+		"isLogined":   false,
+		"language":    language,
+		"translation": translation.(map[string]string),
 	})
 }
 

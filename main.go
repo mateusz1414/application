@@ -1,7 +1,6 @@
 package main
 
 import (
-	"application/loginregister"
 	"application/pages"
 	"application/studentsactions"
 	"application/translation"
@@ -39,6 +38,8 @@ func main() {
 	config.AllowOrigins = []string{serverAddress}
 	server.Use(cors.New(config))
 	server.GET("session/:key", studentsactions.GetSession)
+	server.DELETE("session/:key", studentsactions.ClearKey)
+	server.POST("session/", studentsactions.SetSession)
 	server.Use(getLanguage(bundle))
 	polish := server.Group("pl")
 	{
@@ -75,17 +76,10 @@ func direct(language *gin.RouterGroup) {
 	language.GET("/editstudents/", pages.EditStudents)
 	language.GET("/editstudentform/:studentID/", pages.EditForm)
 	language.GET("/register/", pages.RegisterStudents)
-	user := language.Group("user")
+	/*user := language.Group("user")
 	{
 		user.POST("/register/", loginregister.Register)
 		user.POST("/login/", loginregister.Login)
-	}
-	/*studentaction := language.Group("action")
-	{
-		studentaction.Use(loginCheck())
-		studentaction.POST("/add/", studentsactions.AddStudent)
-		studentaction.GET("/del/:studentID", studentsactions.DelStudent)
-		studentaction.POST("/edit/", studentsactions.EditStudent)
 	}*/
 }
 

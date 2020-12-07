@@ -1,6 +1,6 @@
 $(()=> {
     if($('.student-table').length){
-        loadStudents(createRow,"getAll",$('.student-table'),);
+        loadStudents(createRow,"getAll",$('.student-table'));
     }
     if($('.edit-form').length){
         var url = $(location).attr('pathname').split('/');
@@ -16,10 +16,21 @@ $(()=> {
     if($('.loginButton')){
         loginRegister('login');
     }
+    if($('.logoutButton')){
+        logoutPanel();
+    }
 });
 
 function loadStudents(fun,id,contentTable){
-   // console.log("aaaa");
+    if(contentTable!=undefined){
+        $('.content-table tbody tr').remove();
+        var count = 6;
+        if($('.edit-table').length || $('.delete-table').length){
+            count=7;
+        }
+        var loadWheel = $('<tr><td class="loadWheel" colspan="'+count+'"><img src="/css/img/wheel.png"></td></tr>');
+        contentTable.append(loadWheel);
+    }
     var XHR = new XMLHttpRequest();
     XHR.onload = function(){
         if(XHR.status==200){
@@ -27,9 +38,10 @@ function loadStudents(fun,id,contentTable){
             if(id=="getAll"){
                 var index = 1;
                 response.Students.forEach(student => {
-                    fun(contentTable,student,index);
+                    fun(contentTable,student,index,loadWheel);
                     index++;
                 });
+                loadWheel.remove();
             }else
             {
                 fun(response.Students[0]);
@@ -44,9 +56,9 @@ function loadStudents(fun,id,contentTable){
     XHR.send();
 }
 
-function createRow(contentTable,student,index){
+function createRow(contentTable,student,index,loadWheel){
     var tableRow = $('<tr>');
-    contentTable.append(tableRow);
+    loadWheel.before(tableRow);
     var td;
     for(var key in student){
         var text;
@@ -99,11 +111,12 @@ function getSession(key,callback,student,method){
     var XHR = new XMLHttpRequest;
     XHR.onload = () => {
         if(XHR.status==200){
-            console.log(XHR.response)
             var response = JSON.parse(XHR.response);
             if(response[key]==null){
                 showError("Nie jesteś zalogowany","Kliknij poza okno aby się zalogować",()=>{
-                    $(location).prop('href', 'http://localhost:8080/pl/register/');
+                    var url = $(location).attr('pathname');
+                    var language = url.split("/")[1];
+                    $(location).prop('href', config.serverAddress+language+'/register/');
                 });
                 return
             }
@@ -121,29 +134,36 @@ function setSession(key,value){
     var XHR = new XMLHttpRequest; 
     XHR.onload = () => {
         if(XHR.status==200){
-            console.log(XHR.response);
+            location.reload();
         }else
         {
             showError("Upps","Coś poszło nie tak");
         }
     }
     XHR.open("POST",config.serverAddress+'session/');
-    console.log(JSON.stringify(session));
+    XHR.setRequestHeader("Content-Type", "application/json");
     XHR.send(JSON.stringify({
-        [key]:value
+        key:key,
+        value:value
     }));
 }
 
 function actionStudent(jwt,student,method){
     var XHR = new XMLHttpRequest;
     XHR.onload=() =>{
-        console.log(XHR.response);
         if(XHR.status == 200){
-             console.log(XHR.response);
+            if(method=="DELETE"){
+                loadStudents(createRow,"getAll",$('.student-table'));
+            }else
+            {
+                var url = $(location).attr('pathname');
+                var language = url.split("/")[1];
+                $(location).prop('href', config.serverAddress+language+'/');
+            }
         }else
         if(XHR.status == 401){
             showError("Twoja sesja wygasła","Kliknij poza okno aby się zalogować",()=>{
-                $(location).prop('href', 'http://localhost:8080/pl/register/');
+                logout();
             });
         }
         else
@@ -224,8 +244,10 @@ function send(user,action,ifFalse,ifTrue){
     XHR.onload = ()=>{
         var response = JSON.parse(XHR.response); 
         if(XHR.status==200){
-            ifTrue('jwt',response.AuthToken);
-           // location.reload();
+            if(ifTrue==undefined){
+                sendMessage(response,"register");
+            }else
+                ifTrue('jwt',response.AuthToken);
         }else
         {
             ifFalse(response,action);
@@ -255,4 +277,24 @@ function loginRegister(what){
 function sendMessage(response,action){
     $('.'+action+'MessageFirst').text(response.Message);
     $('.'+action+'MessageSecond').text(response.ErrorCode);
+}
+
+function  logoutPanel(){
+    $('.logoutButton').on('click',logout);
+}
+
+function logout(){
+    XHR = new XMLHttpRequest;
+    XHR.onload = () =>{
+        if(XHR.status!=200){
+            showError("Wystąpił problem serwera","Prosimy spróbować ponownie");
+        }else
+        {
+            var url = $(location).attr('pathname');
+            var language = url.split("/")[1];
+            $(location).prop('href', config.serverAddress+language+'/register/');
+        }
+    }
+    XHR.open('DELETE',config.serverAddress+'session/jwt');
+    XHR.send();
 }

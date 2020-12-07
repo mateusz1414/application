@@ -15,6 +15,12 @@ type Student struct {
 	StudentGender    string `json:"plecstudenta"`
 }
 
+//Session struct values from json
+type Session struct {
+	Key   string `json:"key"`
+	Value string `json:"value"`
+}
+
 //Results is struct data from API
 type Results struct {
 	Status       int       `json:"Status"`
@@ -23,184 +29,7 @@ type Results struct {
 	ErrorCode    string    `json:"ErrorCode"`
 }
 
-/*
-//StudentsList return list of students in API
-func StudentsList() ([]Student, error) {
-	result := Results{}
-	endpoint := "https://studenci.herokuapp.com/student"
-	response, err := http.Get(endpoint)
-	if err != nil {
-		return result.Students, fmt.Errorf("Api connection error")
-	}
-	defer response.Body.Close()
-	if response.StatusCode != 200 {
-		err = json.NewDecoder(response.Body).Decode(&result)
-		if err != nil {
-			return result.Students, err
-		}
-		return result.Students, fmt.Errorf(result.ErrorCode)
-	}
-	err = json.NewDecoder(response.Body).Decode(&result)
-	if err != nil {
-		return result.Students, err
-	}
-	return result.Students, nil
-}
-
-//GetStudent getting student with id
-func (s *Student) GetStudent() error {
-	//should be correct in API
-	students, err := StudentsList()
-	if err != nil {
-		return err
-	}
-	for _, student := range students {
-		if student.StudentID == s.StudentID {
-			*s = student
-			return nil
-		}
-	}
-	return fmt.Errorf("Student not found")
-}
-
-func (s *Student) getDataWithForm(c *gin.Context) {
-	s.StudentFirstName = c.PostForm("studentFirstName")
-	s.StudentLastName = c.PostForm("studentLastName")
-	s.StudentFaciulty = c.PostForm("studentFaciulty")
-	s.DateOfBrith = c.PostForm("studentDateOfBrith")
-	s.StudentGender = c.PostForm("studentGender")
-}
-
-func sendHTTPRequest(student Student, endpoint string, method string, jwt string) (loginregister.Result, error) {
-	result := loginregister.Result{}
-	jsonRequest, err := json.Marshal(student)
-	if err != nil {
-		return result, fmt.Errorf("Nie można wysłać zapytania")
-	}
-	request, err := http.NewRequest(method, endpoint, bytes.NewBuffer(jsonRequest))
-	if err != nil {
-		return result, fmt.Errorf("Nie można wysłać zapytania")
-	}
-	request.Header.Set("Authorization", "Bearer "+jwt)
-	client := &http.Client{}
-	response, err := client.Do(request)
-	if err != nil {
-		return result, err
-	}
-	defer response.Body.Close()
-	err = json.NewDecoder(response.Body).Decode(&result)
-	if err != nil {
-		return result, err
-	}
-	if response.StatusCode != 200 {
-		return result, fmt.Errorf(result.ErrorCode)
-	}
-	return result, nil
-
-}
-
-func clearJWT(c *gin.Context) {
-	store := ginsession.FromContext(c)
-	store.Delete("jwt")
-}
-
-//AddStudent add student to database
-func AddStudent(c *gin.Context) {
-	language := loginregister.GetLanguage(c)
-	jwt, ok := c.Get("jwt")
-	if !ok {
-		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
-		c.Redirect(302, "/"+language+"/register/")
-		return
-	}
-	student := Student{}
-	student.getDataWithForm(c)
-	endpoint := "https://studenci.herokuapp.com/student/"
-	result, err := sendHTTPRequest(student, endpoint, http.MethodPost, jwt.(string))
-	if result.Error != "" {
-		clearJWT(c)
-		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
-		c.Redirect(302, "/"+language+"/register/")
-		return
-	}
-	if err != nil {
-		loginregister.SetError(c, "addError", "AddError")
-		c.Redirect(302, "/"+language+"/addstudents/")
-		return
-	}
-	c.Redirect(302, "/"+language+"/")
-
-}
-
-//DelStudent delete student from database
-func DelStudent(c *gin.Context) {
-	language := loginregister.GetLanguage(c)
-	jwt, ok := c.Get("jwt")
-	if !ok {
-		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
-		c.Redirect(302, "/"+language+"/register/")
-		return
-	}
-	student := Student{}
-	studentIDString, ok := c.Params.Get("studentID")
-	if !ok {
-		c.Redirect(302, "/"+language+"/deletestudents/")
-		return
-	}
-	var err error
-	student.StudentID, err = strconv.Atoi(studentIDString)
-	if err != nil {
-		c.Redirect(302, "/"+language+"/deletestudents/")
-		return
-	}
-	endpoint := "https://studenci.herokuapp.com/student/" + studentIDString
-	result, err := sendHTTPRequest(student, endpoint, http.MethodDelete, jwt.(string))
-	if result.Error != "" {
-		clearJWT(c)
-		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
-		c.Redirect(302, "/"+language+"/register/")
-		return
-	}
-	if err != nil {
-		fmt.Println(result)
-		c.Redirect(302, "/"+language+"/deletestudents/")
-		return
-	}
-	c.Redirect(302, "/"+language+"/")
-}
-
-//EditStudent change data of student in database
-func EditStudent(c *gin.Context) {
-	language := loginregister.GetLanguage(c)
-	jwt, ok := c.Get("jwt")
-	if !ok {
-		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
-		c.Redirect(302, "/"+language+"/register/")
-		return
-	}
-	student := Student{}
-	student.getDataWithForm(c)
-	studentIDString := strconv.Itoa(student.StudentID)
-	endpoint := "https://studenci.herokuapp.com/student/" + studentIDString
-	result, err := sendHTTPRequest(student, endpoint, http.MethodPut, jwt.(string))
-	if result.Error != "" {
-		clearJWT(c)
-		loginregister.SetError(c, "loginErrorFirst", "MustLoginInError")
-		c.Redirect(302, "/"+language+"/register/")
-		return
-	}
-	if err != nil {
-		loginregister.SetError(c, "editError", "EditError")
-		c.Redirect(302, "/"+language+"/editstudentform/"+studentIDString+"/")
-		return
-	}
-
-	c.Redirect(302, "/"+language+"/")
-
-}
-
-
-//GetSession return session data*/
+//GetSession return session data
 func GetSession(c *gin.Context) {
 	key := c.Param("key")
 	store := ginsession.FromContext(c)
@@ -209,4 +38,28 @@ func GetSession(c *gin.Context) {
 	c.JSON(200, gin.H{
 		key: value,
 	})
+}
+
+//SetSession set values in session
+func SetSession(c *gin.Context) {
+	session := Session{}
+	err := c.ShouldBindJSON(&session)
+	if err != nil {
+		c.JSON(500, gin.H{})
+		return
+	}
+	store := ginsession.FromContext(c)
+	store.Set(session.Key, session.Value)
+	err = store.Save()
+	if err != nil {
+		c.JSON(500, gin.H{})
+		return
+	}
+}
+
+//ClearKey remove value in session
+func ClearKey(c *gin.Context) {
+	key := c.Param("key")
+	store := ginsession.FromContext(c)
+	store.Delete(key)
 }

@@ -1,6 +1,7 @@
 {{define "page-aside"}}
 {{if .isLogined}}
 {{index .translation "DisplayLogged"}}
+<button class="logoutButton">{{index .translation "LogoutButton"}}</button>
 {{else}}
 {{index .translation "DisplayLoginIn"}}</br>
 <p class="errors loginMessageFirst">

@@ -12,18 +12,6 @@
         </tr>
     </thead>
     <tbody>
-       <!-- {{$displayselectmen:=index .translation "DisplaySelectMen"}}
-        {{$displayselectwomen:=index .translation "DisplaySelectWomen"}}
-        {{ range $index,$value :=.studentsList}}
-        <tr>
-            <td>{{$index}}</td>
-            <td>{{.StudentFirstName}}</td>
-            <td>{{.StudentLastName}}</td>
-            <td>{{.DateOfBrith}}</td>
-            <td>{{.StudentFaciulty}}</td>
-            <td>{{if eq .StudentGender "0"}}{{$displayselectmen}}{{else}}{{$displayselectwomen}}{{end}}</td>
-        </tr>
-        {{end}}-->
     </tbody>
 </table>
 {{end}}

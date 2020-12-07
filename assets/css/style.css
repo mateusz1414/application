@@ -198,9 +198,23 @@ footer{
 .errorFirst{
         font-size: 110%;
         padding-bottom:5%;
-    }
+}
 
  .errorSecond{
         font-size: 90%;
 
+}
+
+.loadWheel{
+    text-align: center;
+}
+
+.loadWheel img{
+    animation: rotate 0.75s linear infinite;
+}
+
+@keyframes rotate{
+    100%{
+        transform: rotate(360deg);
     }
+}
