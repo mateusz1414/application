@@ -1,8 +1,11 @@
 package studentsactions
 
 import (
+	"application/loginregister"
+	"fmt"
+
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	ginsession "github.com/go-session/gin-session"
 )
 
 //Student is struct of data about student
@@ -32,9 +35,8 @@ type Results struct {
 //GetSession return session data
 func GetSession(c *gin.Context) {
 	key := c.Param("key")
-	store := ginsession.FromContext(c)
-	value, _ := store.Get(key)
-	//	a, _ := store.Get("jwt")
+	session := sessions.Default(c)
+	value := session.Get(key)
 	c.JSON(200, gin.H{
 		key: value,
 	})
@@ -42,24 +44,37 @@ func GetSession(c *gin.Context) {
 
 //SetSession set values in session
 func SetSession(c *gin.Context) {
-	session := Session{}
-	err := c.ShouldBindJSON(&session)
+	change := []Session{}
+	err := c.ShouldBindJSON(&change)
 	if err != nil {
-		c.JSON(500, gin.H{})
+		fmt.Println(err)
+		c.JSON(500, change)
 		return
 	}
-	store := ginsession.FromContext(c)
-	store.Set(session.Key, session.Value)
-	err = store.Save()
-	if err != nil {
-		c.JSON(500, gin.H{})
-		return
+	session := sessions.Default(c)
+	for _, element := range change {
+		session.Set(element.Key, element.Value)
 	}
+	session.Save()
+	c.JSON(200, gin.H{
+		"message": "success",
+	})
 }
 
 //ClearKey remove value in session
 func ClearKey(c *gin.Context) {
 	key := c.Param("key")
-	store := ginsession.FromContext(c)
-	store.Delete(key)
+	session := sessions.Default(c)
+	session.Delete(key)
+}
+
+func Logout(c *gin.Context) {
+	session := sessions.Default(c)
+	session.Delete("permissions")
+	session.Delete("jwt")
+	session.Delete("userID")
+	session.Delete("email")
+	session.Save()
+	language := loginregister.GetLanguage(c)
+	c.Redirect(302, "/"+language+"/")
 }

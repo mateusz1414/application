@@ -1,0 +1,35 @@
+[AddGrade]
+hash = "sha1-1d5a89c343d71097ec43fe9d90cadf82fa300f5c"
+other = "Dodaj ocenę"
+
+[AddOnWaiting]
+hash = "sha1-3a592963aacddc1f7411dfb6c9dde9ed8b9c6f71"
+other = "Zostałeś dodany na listę oczekujących."
+
+[AllFields]
+hash = "sha1-95ec4e5f593509c9081941596243b22ca3f71023"
+other = "Należy wypełnić wszystkie pola"
+
+[Average]
+hash = "sha1-3bba143523a6b5d8383078c69ec275e3e2311c6a"
+other = "Średnia:"
+
+[IncorrectEmail]
+hash = "sha1-63a540364f1809c9945152a7fc553fb46c82ec81"
+other = "Ten email jest niepoprawny"
+
+[IncorrectGrade]
+hash = "sha1-81406c640e26bcf216890af69c55ca5770b5479f"
+other = "Ta ocena jest niepoprawna"
+
+[OnList]
+hash = "sha1-7b74059d7c701a0c59656b98d3bd4349925b7c22"
+other = "Jesteś na liście."
+
+[ServerError]
+hash = "sha1-aef834ef25dc9d763d82d5314bdb15f95e246f45"
+other = "Przepraszamy, bład po stronie serwera"
+
+[SessionExpired]
+hash = "sha1-944612f12954620bd03a68719b01b28e33b5b28b"
+other = "Twoja sesja wygasła."

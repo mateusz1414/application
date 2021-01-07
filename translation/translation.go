@@ -18,19 +18,13 @@ func LoadTranslation(localizer *i18n.Localizer) map[string]string {
 	translated["H1Banner"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
 			ID:    "H1Banner",
-			Other: "My owner application",
+			Other: "Students",
 		},
 	})
 	translated["MenuDisplay"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
 			ID:    "MenuDisplay",
 			Other: "Display",
-		},
-	})
-	translated["MenuAdd"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "MenuAdd",
-			Other: "Addition",
 		},
 	})
 	translated["MenuDelete"] = localizer.MustLocalize(&i18n.LocalizeConfig{
@@ -45,154 +39,82 @@ func LoadTranslation(localizer *i18n.Localizer) map[string]string {
 			Other: "Edit",
 		},
 	})
-	translated["MenuRegister"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["RegisterNoun"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "MenuRegister",
+			ID:    "RegisterNoun",
 			Other: "Register",
 		},
 	})
-	translated["Display#"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["Name"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "Display#",
-			Other: "#",
-		},
-	})
-	translated["DisplayName"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "DisplayName",
+			ID:    "Name",
 			Other: "Name",
 		},
 	})
-	translated["DisplayLastName"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["Surname"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayLastName",
-			Other: "Last name",
+			ID:    "Surname",
+			Other: "Surname",
 		},
 	})
-	translated["DisplayDateOfBirth"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["DOB"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayDateOfBirth",
-			Other: "Date of birth",
+			ID:    "DOB",
+			Other: "DOB",
 		},
 	})
-	translated["DisplayDepartment"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["Department"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayDepartment",
+			ID:    "Department",
 			Other: "Department",
 		},
 	})
-	translated["DisplayGender"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["Sex"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayGender",
-			Other: "Gender",
+			ID:    "Sex",
+			Other: "Sex",
 		},
 	})
-	translated["DisplaySelectMen"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["Male"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplaySelectMen",
-			Other: "Men",
+			ID:    "Male",
+			Other: "Male",
 		},
 	})
-	translated["DisplaySelectWomen"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["Female"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplaySelectWomen",
-			Other: "Women",
+			ID:    "Female",
+			Other: "Female",
 		},
 	})
-	translated["DisplayAdd"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["LoginNoun"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayAdd",
-			Other: "Add",
-		},
-	})
-	translated["DisplayDelete"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "DisplayDelete",
-			Other: "Delete",
-		},
-	})
-	translated["DisplayEdit"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "DisplayEdit",
-			Other: "Edit",
-		},
-	})
-	translated["DisplayLogin"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "DisplayLogin",
+			ID:    "LoginNoun",
 			Other: "Login",
 		},
 	})
-	translated["DisplayPassword"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["Password"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayPassword",
+			ID:    "Password",
 			Other: "Password",
 		},
 	})
-	translated["DisplayConfirmPassword"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["ConfirmPassword"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayPassword",
-			Other: "Password",
+			ID:    "ConfirmPassword",
+			Other: "Confirm password",
 		},
 	})
-	translated["DisplayLoginIn"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["IncorrectEmailOrPassword"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayLoginIn",
-			Other: "Login in",
+			ID:    "IncorrectEmailOrPassword",
+			Other: "Incorrect email or password",
 		},
 	})
-	translated["DisplayRegister"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["EmailIsTooShort"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayRegister",
-			Other: "Register",
-		},
-	})
-	translated["DisplayLogged"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "DisplayLogged",
-			Other: "Logged",
-		},
-	})
-	translated["DisplayFooter"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "DisplayFooter",
-			Other: "Footer",
-		},
-	})
-	translated["MustLoginInError"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "MustLoginInError",
-			Other: "Must login in",
-		},
-	})
-	translated["LoginFailed"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "LoginFailed",
-			Other: "Login feiled",
-		},
-	})
-	translated["IncorrectLoginOrPassword"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "IncorrectLoginOrPassword",
-			Other: "Incorrect login or password",
-		},
-	})
-	translated["RegistrationFailed"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "RegistrationFailed",
-			Other: "Registration failed",
-		},
-	})
-	translated["SuccessfullyRegistered"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "SuccessfullyRegistered",
-			Other: "Successfully registered",
-		},
-	})
-	translated["LoginIsTooShort"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "LoginIsTooShort",
-			Other: "Login is too short",
+			ID:    "EmailIsTooShort",
+			Other: "Email is too short",
 		},
 	})
 	translated["PasswordIsTooShort"] = localizer.MustLocalize(&i18n.LocalizeConfig{
@@ -207,28 +129,16 @@ func LoadTranslation(localizer *i18n.Localizer) map[string]string {
 			Other: "Passwords do not match",
 		},
 	})
-	translated["ThisUserAlreadyExists"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["BusyEmail"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "ThisUserAlreadyExists",
-			Other: "This user already exists",
+			ID:    "BusyEmail",
+			Other: "This email is busy",
 		},
 	})
-	translated["DisplayChange"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+	translated["Modify"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:    "DisplayChange",
-			Other: "Change",
-		},
-	})
-	translated["AddError"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "AddError",
-			Other: "Student cannot be added",
-		},
-	})
-	translated["EditError"] = localizer.MustLocalize(&i18n.LocalizeConfig{
-		DefaultMessage: &i18n.Message{
-			ID:    "EditError",
-			Other: "Editing has failed",
+			ID:    "Modify",
+			Other: "Modify",
 		},
 	})
 	translated["LogoutButton"] = localizer.MustLocalize(&i18n.LocalizeConfig{
@@ -237,5 +147,156 @@ func LoadTranslation(localizer *i18n.Localizer) map[string]string {
 			Other: "Logout",
 		},
 	})
+	translated["Teachers"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Teachers",
+			Other: "Teachers",
+		},
+	})
+	translated["NO"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "NO",
+			Other: "No",
+		},
+	})
+	translated["Subject"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Subject",
+			Other: "Subject.",
+		},
+	})
+	translated["Email"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Email",
+			Other: "Email",
+		},
+	})
+	translated["LoginVerb"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "LoginVerb",
+			Other: "Login",
+		},
+	})
+	translated["ComingSoon"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "ComingSoon",
+			Other: "Coming soon",
+		},
+	})
+	translated["RegisterVerb"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "RegisterVerb",
+			Other: "Register",
+		},
+	})
+	translated["WaitingList"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "WaitingList",
+			Other: "Waiting list",
+		},
+	})
+	translated["EditStudent"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "EditStudent",
+			Other: "Edit student",
+		},
+	})
+	translated["Select"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Select",
+			Other: "Wybierz",
+		},
+	})
+	translated["Cancel"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Cancel",
+			Other: "Cancel",
+		},
+	})
+	translated["AddGrades"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "AddGrades",
+			Other: "Add grades",
+		},
+	})
+	translated["AddGrade"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "AddGrade",
+			Other: "Add grade",
+		},
+	})
+	translated["ViewGrades"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "ViewGrades",
+			Other: "View grades",
+		},
+	})
+	translated["Join"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Join",
+			Other: "Join",
+		},
+	})
+	translated["JoinToWaiting"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "JoinToWaiting",
+			Other: "Join to witing list",
+		},
+	})
+	translated["SendRequest"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "SendRequest",
+			Other: "Send request",
+		},
+	})
+	translated["AddOnWaiting"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "AddOnWaiting",
+			Other: "You have been added on waiting list.",
+		},
+	})
+	translated["SessionExpired"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "SessionExpired",
+			Other: "Your session has expired.",
+		},
+	})
+	translated["Average"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Average",
+			Other: "Average:",
+		},
+	})
+	translated["IncorrectGrade"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "IncorrectGrade",
+			Other: "This grade is incorrect",
+		},
+	})
+	translated["IncorrectEmail"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "IncorrectEmail",
+			Other: "This email is incorrect",
+		},
+	})
+	translated["AllFields"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "AllFields",
+			Other: "Fill in all fields",
+		},
+	})
+	translated["OnList"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "OnList",
+			Other: "You are on list.",
+		},
+	})
+	translated["ServerError"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "ServerError",
+			Other: "Oh no, we have some problem.",
+		},
+	})
+
 	return translated
 }

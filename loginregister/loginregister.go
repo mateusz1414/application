@@ -1,8 +1,10 @@
 package loginregister
 
 import (
+	"strconv"
+
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	ginsession "github.com/go-session/gin-session"
 )
 
 //User data about user
@@ -22,14 +24,36 @@ type Result struct {
 	Error      string `json:"Error"`
 }
 
-//IsLogined check if token is in session
-func IsLogined(c *gin.Context) bool {
-	store := ginsession.FromContext(c)
-	_, ok := store.Get("jwt")
-	if ok {
-		return true
+type Session struct {
+	IsLogined   bool
+	UserID      int
+	Email       string
+	Permissions string
+}
+
+//IsLogined return data about user
+func IsLogined(c *gin.Context) Session {
+	s := Session{
+		IsLogined: false,
 	}
-	return false
+	session := sessions.Default(c)
+	if session.Get("jwt") == nil {
+		return s
+	}
+	if session.Get("permissions") == nil {
+		return s
+	}
+	s.Permissions = session.Get("permissions").(string)
+	if session.Get("userID") == nil {
+		return s
+	}
+	s.UserID, _ = strconv.Atoi(session.Get("userID").(string))
+	if session.Get("email") == nil {
+		return s
+	}
+	s.Email = session.Get("email").(string)
+	s.IsLogined = true
+	return s
 
 }
 

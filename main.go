@@ -1,9 +1,11 @@
 package main
 
 import (
+	"application/loginregister"
 	"application/pages"
 	"application/studentsactions"
 	"application/translation"
+	"fmt"
 	"os"
 	"strings"
 
@@ -11,8 +13,9 @@ import (
 
 	gintemplate "github.com/foolin/gin-template"
 	"github.com/gin-contrib/cors"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	ginsession "github.com/go-session/gin-session"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
@@ -33,7 +36,8 @@ func main() {
 	})
 	server.Static("/css", "./assets/css")
 	server.Static("/js", "./assets/js")
-	server.Use(ginsession.New())
+	store := cookie.NewStore([]byte("thisIsGoLanguage"))
+	server.Use(sessions.Sessions("go_session_id", store))
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{serverAddress}
 	server.Use(cors.New(config))
@@ -58,11 +62,9 @@ func main() {
 
 func loginCheck() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		store := ginsession.FromContext(c)
-		jwt, ok := store.Get("jwt")
-		if !ok {
-			return
-		}
+		session := sessions.Default(c)
+		jwt := session.Get("jwt")
+		fmt.Println("JWT to '" + jwt.(string) + "'")
 		c.Set("jwt", jwt.(string))
 		c.Next()
 	}
@@ -70,17 +72,44 @@ func loginCheck() gin.HandlerFunc {
 
 func direct(language *gin.RouterGroup) {
 	language.GET("/", pages.ShowStudents)
-	language.GET("/showstudents/", pages.ShowStudents)
+	language.GET("/students/", pages.ShowStudents)
+	language.GET("/teachers/", pages.ShowTeachers)
 	language.GET("/deletestudents/", pages.DeleteStudents)
 	language.GET("/addstudents/", pages.AddStudents)
 	language.GET("/editstudents/", pages.EditStudents)
 	language.GET("/editstudentform/:studentID/", pages.EditForm)
-	language.GET("/register/", pages.RegisterStudents)
+	language.GET("/register/", authMiddleWeare(nil), pages.Register)
+	language.GET("/login/", authMiddleWeare(nil), pages.Login)
+	language.GET("/getgrades/", authMiddleWeare([]string{"student"}), pages.GetGrades)
+	language.GET("/addgrades/", authMiddleWeare([]string{"teacher"}), pages.AddGrades)
+	language.GET("/modify/", authMiddleWeare([]string{"dean"}), pages.Modify)
+	language.GET("/user/", authMiddleWeare([]string{"teacher", "student", "dean", "user"}), pages.UserPanel)
+	language.GET("/logout/", studentsactions.Logout)
 	/*user := language.Group("user")
 	{
 		user.POST("/register/", loginregister.Register)
 		user.POST("/login/", loginregister.Login)
 	}*/
+}
+
+func authMiddleWeare(permisssion []string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		user := loginregister.IsLogined(c)
+		language, _ := c.Get("language")
+		if !user.IsLogined && permisssion != nil {
+			//cooke należy się zalogować
+			c.Redirect(302, "/"+language.(string)+"/login/")
+			return
+		} else if user.IsLogined && permisssion == nil {
+			c.Redirect(302, "/"+language.(string)+"/")
+			return
+		} else if user.IsLogined && !having(user.Permissions, permisssion) {
+			fmt.Println("aa")
+			//cooke nie masz uprawnien
+			c.Redirect(302, "/"+language.(string)+"/")
+			return
+		}
+	}
 }
 
 func getLanguage(bundle *i18n.Bundle) gin.HandlerFunc {
@@ -117,6 +146,15 @@ func isAccepted(language string) bool {
 		return true
 	case "en":
 		return true
+	}
+	return false
+}
+
+func having(have string, requied []string) bool {
+	for _, value := range requied {
+		if value == have {
+			return true
+		}
 	}
 	return false
 }

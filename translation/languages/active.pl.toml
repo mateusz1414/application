@@ -1,122 +1,106 @@
-[AddError]
-hash = "sha1-f2652dc8c84bc253fed4f400166723cf60325726"
-other = "Nie udało się dodać studenta"
+[AddGrades]
+hash = "sha1-d1fa99d1e57516773ebf411c83d5cc3e712847cd"
+other = "Dodaj oceny"
 
-["Display#"]
-hash = "sha1-d08f88df745fa7950b104e4a707a31cfce7b5841"
-other = "Lp."
+[BusyEmail]
+hash = "sha1-10562ccf42b5042224628c3d008e15d85c76256e"
+other = "Ten email jest zajęty"
 
-[DisplayAdd]
-hash = "sha1-61cc55aa0453184734c3fa0b621eda6fa874bd83"
-other = "Dodaj"
+[Cancel]
+hash = "sha1-77dfd2135f4db726c47299bb55be26f7f4525a46"
+other = "Anuluj"
 
-[DisplayChange]
-hash = "sha1-64fbd995d3b6b156ee26ae3c03e6516434c34c12"
-other = "Zmień"
+[ComingSoon]
+hash = "sha1-e4115be258dbdd1661c5f1ff14670c19ef1048da"
+other = "Wkrótce"
 
-[DisplayDateOfBirth]
-hash = "sha1-9518425f4174063deaa8350a027abe1f38cf535b"
+[ConfirmPassword]
+hash = "sha1-4a7c565d4c4430e3bb8fa6c560125d5eb37e7c3d"
+other = "Powtórz hasło"
+
+[DOB]
+hash = "sha1-293dd6004e6e6d2aa0f4506c87e386204cb65749"
 other = "Data urodzenia"
 
-[DisplayDelete]
-hash = "sha1-f6fdbe48dc54dd86f63097a03bd24094dedd713a"
-other = "Usuń"
-
-[DisplayDepartment]
+[Department]
 hash = "sha1-db40106a405135d4021c1efffb756063ccb2315f"
 other = "Wydział"
 
-[DisplayEdit]
-hash = "sha1-5301648dcf6b53cefc9ed52999aaa92d4603cae0"
-other = "Edytuj"
+[EditStudent]
+hash = "sha1-22a5ce78da6a9466b8631015ac0ca16ce08c72d7"
+other = "Edycja studenta"
 
-[DisplayFooter]
-hash = "sha1-26c01e70a337f208f56dae1c3bc18f60c4bff453"
-other = "Stopka"
+[Email]
+hash = "sha1-84add5b2952787581cb9a8851eef63d1ec75d22b"
+other = "Email"
 
-[DisplayGender]
-hash = "sha1-8a754c61c2ced0c5ff79a1827e02c9d643d6d926"
-other = "Płeć"
+[EmailIsTooShort]
+hash = "sha1-4da0703b48cabb881c9783a6098a213152c4990f"
+other = "Email jest zbyt krótki"
 
-[DisplayLastName]
-hash = "sha1-adec36a821f81a6990b1e65d9e4ac5fb8ee2a205"
-other = "Nazwisko"
-
-[DisplayLogged]
-hash = "sha1-567a04e87e0264325ea2d8341bf4b0ffb622ca3f"
-other = "zalogowany"
-
-[DisplayLogin]
-hash = "sha1-4e5a2893bdcc7d239c1db72e4c4ffbe4bea73174"
-other = "Login"
-
-[DisplayLoginIn]
-hash = "sha1-e3e7f80a1e8e1c1e1958dc368d361db864e86614"
-other = "Zaloguj"
-
-[DisplayName]
-hash = "sha1-709a23220f2c3d64d1e1d6d18c4d5280f8d82fca"
-other = "Imię"
-
-[DisplayPassword]
-hash = "sha1-8be3c943b1609fffbfc51aad666d0a04adf83c9d"
-other = "Hasło"
-
-[DisplayRegister]
-hash = "sha1-d672995a14650d0e018026b64f297663d8c71c8d"
-other = "Zarejestruj"
-
-[DisplaySelectMen]
-hash = "sha1-a9b53b05c3441eeb6e059f55fa44d7efe91481a6"
-other = "Mężczyzna"
-
-[DisplaySelectWomen]
-hash = "sha1-3a65e770b28af650164e9f6d344162ce8cde7d15"
+[Female]
+hash = "sha1-b7c17e97d3d625694b836d85ace6edc18bbef0e6"
 other = "Kobieta"
 
-[EditError]
-hash = "sha1-ed73c65668e89b56893bd26dd27abffb8a1635e1"
-other = "Edycja nie powiodła się"
-
 [H1Banner]
-hash = "sha1-298371317aac7577c4d7e510c3787446e260a961"
-other = "Moja własna aplikacja"
+hash = "sha1-fcfac3efb6ae696fcb48427ff359561932b8f8e8"
+other = "Studenci"
 
-[IncorrectLoginOrPassword]
-hash = "sha1-95e2bb6e40c219d101888b71b5c5d8c2b375865e"
+[IncorrectEmailOrPassword]
+hash = "sha1-788d3735e304fa8e76b78c05be0ac0b3cdf353a9"
 other = "Niepoprawny login lub hasło"
 
-[LoginFailed]
-hash = "sha1-2a9d6340377d62a8c97b37a8c46ce454faf17a26"
-other = "Niepoprawne dane logowania"
+[Join]
+hash = "sha1-e0d73143de80d17e82de2e017ac156ca3b9c4e01"
+other = "Dołącz"
 
-[LoginIsTooShort]
-hash = "sha1-a53667ac29a5cd0fc5118acad692f84c01cc13ab"
-other = "Login jest zbyt krótki"
+[JoinToWaiting]
+hash = "sha1-5f60ed58c789dcfe57cd2fa79a2c3ce65a4253b5"
+other = "Dołącz do listy oczekujących"
 
-[MenuAdd]
-hash = "sha1-8e8428e85c661f03dd33db8f12b20a010ab5be5e"
-other = "Dodawanie"
+[LoginNoun]
+hash = "sha1-4e5a2893bdcc7d239c1db72e4c4ffbe4bea73174"
+other = "Logowanie"
+
+[LoginVerb]
+hash = "sha1-4e5a2893bdcc7d239c1db72e4c4ffbe4bea73174"
+other = "Zaloguj"
+
+[LogoutButton]
+hash = "sha1-e43d612e11f1568f2373e719d4c4b08dcecdc7cc"
+other = "Wyloguj"
+
+[Male]
+hash = "sha1-3f3a489c72dea800ea7b6338c89938766d41a6e5"
+other = "Mężczyzna"
 
 [MenuDelete]
 hash = "sha1-f6fdbe48dc54dd86f63097a03bd24094dedd713a"
-other = "Usuwanie"
+other = "Usuń"
 
 [MenuDisplay]
 hash = "sha1-574ff9b0c49cdeb5f5508548ae0cab44fecee038"
-other = "Wyświetlanie"
+other = "Wyświetl"
 
 [MenuEdit]
 hash = "sha1-5301648dcf6b53cefc9ed52999aaa92d4603cae0"
-other = "Edycja"
+other = "Edytuj"
 
-[MenuRegister]
-hash = "sha1-d672995a14650d0e018026b64f297663d8c71c8d"
-other = "Rejestracja"
+[Modify]
+hash = "sha1-9fe408e12dc6ee8d44c87b38b82ff435c397a441"
+other = "Modyfikuj"
 
-[MustLoginInError]
-hash = "sha1-26aa3a2e7f04a0cba98d10ae8b446328d5645688"
-other = "Musisz się zalogować"
+[NO]
+hash = "sha1-816c52fd2bdd94a63cd0944823a6c0aa9384c103"
+other = "Lp"
+
+[Name]
+hash = "sha1-709a23220f2c3d64d1e1d6d18c4d5280f8d82fca"
+other = "Imie"
+
+[Password]
+hash = "sha1-8be3c943b1609fffbfc51aad666d0a04adf83c9d"
+other = "Hasło"
 
 [PasswordIsTooShort]
 hash = "sha1-bf8439779e3b5235356802d181792fa80ed5f94c"
@@ -126,18 +110,78 @@ other = "Hasło jest zbyt krótkie"
 hash = "sha1-d69c3b1ac54be7da3666d9937b9c78e7c309d6e8"
 other = "Hasła nie są takie same"
 
-[RegistrationFailed]
-hash = "sha1-8bfb1a9744e837fe3540134a347207cbe5937fa7"
-other = "Nieudało się zarejestrować"
+[RegisterNoun]
+hash = "sha1-d672995a14650d0e018026b64f297663d8c71c8d"
+other = "Rejestracja"
 
-[SuccessfullyRegistered]
-hash = "sha1-416a551f7a5acd38686b67a73c68098a508758bc"
-other = "Poprawnie zarejetrowano"
+[RegisterVerb]
+hash = "sha1-d672995a14650d0e018026b64f297663d8c71c8d"
+other = "Zarejestruj"
 
-[ThisUserAlreadyExists]
-hash = "sha1-c7e13050fa9d0e2a21d12b6f6cc655f3751e3dc3"
-other = "Użytkownik już istnieje"
+[Select]
+hash = "sha1-95688ac4a94d9faae8403f60a1b57a1fb283c0b2"
+other = "Wybierz"
 
-[LogoutButton]
-hash = "sha1-e43d612e11f1568f2373e719d4c4b08dcecdc7cc"
-other = "Wyloguj"
+[SendRequest]
+hash = "sha1-a89d64179469a9dcedf347dc7dddae85a2272b3e"
+other = "Wyślij zapytanie"
+
+[Sex]
+hash = "sha1-e301dd6062f7e9a79975fe8e2d0ba91694c4dbc3"
+other = "Płeć"
+
+[Subject]
+hash = "sha1-0dafc6b02668a661a2241200ba47cfcdc32ca7fe"
+other = "Przedmiot"
+
+[Surname]
+hash = "sha1-77dfca2a56f9b1ffc2b6687e230088cf86fbc074"
+other = "Nazwisko"
+
+[Teachers]
+hash = "sha1-f2604f9b72ad42b1d523a572d48c056f91b1cfd4"
+other = "Nauczyciele"
+
+[ViewGrades]
+hash = "sha1-26ca976fc9b5b5d96eae82dca6fc27f43c0a4d12"
+other = "Przeglądaj oceny"
+
+[WaitingList]
+hash = "sha1-a6b2452b81835028c3528e0246510683dac13a95"
+other = "Lista oczekujących"
+
+[AddGrade]
+hash = "sha1-1d5a89c343d71097ec43fe9d90cadf82fa300f5c"
+other = "Dodaj ocenę"
+
+[AddOnWaiting]
+hash = "sha1-3a592963aacddc1f7411dfb6c9dde9ed8b9c6f71"
+other = "Zostałeś dodany na listę oczekujących."
+
+[AllFields]
+hash = "sha1-95ec4e5f593509c9081941596243b22ca3f71023"
+other = "Należy wypełnić wszystkie pola"
+
+[Average]
+hash = "sha1-3bba143523a6b5d8383078c69ec275e3e2311c6a"
+other = "Średnia:"
+
+[IncorrectEmail]
+hash = "sha1-63a540364f1809c9945152a7fc553fb46c82ec81"
+other = "Ten email jest niepoprawny"
+
+[IncorrectGrade]
+hash = "sha1-81406c640e26bcf216890af69c55ca5770b5479f"
+other = "Ta ocena jest niepoprawna"
+
+[OnList]
+hash = "sha1-7b74059d7c701a0c59656b98d3bd4349925b7c22"
+other = "Jesteś na liście."
+
+[ServerError]
+hash = "sha1-aef834ef25dc9d763d82d5314bdb15f95e246f45"
+other = "Przepraszamy, bład po stronie serwera"
+
+[SessionExpired]
+hash = "sha1-944612f12954620bd03a68719b01b28e33b5b28b"
+other = "Twoja sesja wygasła."

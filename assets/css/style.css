@@ -1,212 +1,230 @@
-html{
-    width: 100%;
-    height: 100%;
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	color: white;
 }
+
+html{
+	height: 100%;
+	width: 100%;
+}
+
 
 body{
-    margin: 0;
-    background-color: #2f3336;
-    color: #efefef;
-    font-family: Georgia;
-    font-size: 17px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+	width: 100%;
+	height: 100%;
+	background-color: #2F3336;
 }
 
-h1.logo{
-    font-size: 44px;
-    font-weight: 700px;
-    color: #ddd;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    margin-top: 30px;
-    margin-bottom: 20px;
+h1{
+	text-align: center;
 }
 
-nav{
-    background-color: #1c74b2;
-    text-align: center;
+a{
+	text-decoration: none;
+	color: white;
 }
 
-.page-nav{
-    list-style-type: none;
-    padding: 10px;
-    font-size: 18px;
-    min-height: 38px;
-    line-height: 200%;
+.banner{
+	padding-top:2%;
 }
 
-.page-nav > li{
-    display: inline-block;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-right: 1px dashed #0a2b42;
+.modal h5,.modal .row div{
+	color: white;
 }
 
-.page-nav >li:first-child{
-    border-left: 1px dashed #0a2b42;
+.modal-content,.modal-dialog{
+	background-color: #3d3e3f;
 }
 
-.page-nav a{
-    color:#fff;
-    text-decoration: none;
+.student-modal h5{
+	margin: auto;
 }
 
-.page-nav a:hover{
-    color: #0a2b42;
+.student-modal .col{
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
 
-main{
-    width: 100%;
-    height: 75%;
+.student-modal .col:first-child{
+	text-align: right;
 }
 
-section{
-    background-color: #18649e;
-    width: 80%;
-    float: left;
-    height: 100%; 
-    overflow-x: hidden;
+.student-modal .col:nth-child(2){
+	text-align: center;
 }
 
-.page-section{
-       width: 100%;
-       height: 100%;
-       padding: 2%;
+.student-modal .col:nth-child(2) *{
+	color: black;
 }
 
-aside{
-    background-color: #2c5961;
-    float: left;
-    width: 20%;
-    height: 100%;
+.student-modal button:hover{
+	cursor: pointer;
 }
 
-.page-aside{
-    width: 100%;
-    height: 100%;
-    padding: 1%;
+.page-header{
+	height: 20%;
+	padding-top: 1.5%;
+	margin: auto;
+	margin-bottom: 1%;
 }
 
-footer{
-    clear: both;
-    height: 10%;
-}
-
-.page-footer{
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    padding-top: 20px;
+.page-main-section{
+	height: 70%;
+	margin: auto;
+	background-color: rgba(56,94,123,0.8);
+	overflow: auto;
 }
 
 .content-table{
-    margin:auto;
-    border-collapse: collapse;
-    font-size: 90%;
-    min-width: 40%;
-    width:80%;
-    border-radius: 5px 5px 0 0;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	text-align: center;
 }
 
-.content-table thead tr{
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
+.content-table tr:nth-of-type(even){
+	background-color: #5385AB;
 }
 
-.content-table th, .content-table td{
-    padding: 12px 15px;
+.content-table th{
+	text-shadow: 2px 2px 4px black;
 }
 
-.content-table tbody tr{
-    border-bottom: 1px solid #dddddd;
+.banner{
+	background-color: #5385AB;
+	height: 80%;
 }
 
-.content-table tbody tr:nth-of-type(even){
-    background-color: #89b4ce;
-    font-weight: bold;
-    color: #033a2f;
+.nav-main,.nav-user{
+	list-style-type: none;
 }
 
-.content-table tbody tr:last-of-type{
-    border-bottom: 2px solid #009879;
+.table-layout{
+	overflow: auto;
 }
 
-.short-table{
-	width: 40%;
+.login_register{
+	margin: auto;
+	margin-top: 12%;
 }
 
-.login-table{
-    margin: 10% 2%;
-    border-collapse: collapse;
-    font-size: 90%;
-    min-width: 40%;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        width: 95%;
-}
-
-.login-table thead tr{
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-}
-
-.login-table th, .login-table td{
-    padding: 5% 5%;
-}
-
-.errors{
-    font-size: 120%;
+.login_register div{
     text-align: center;
-    border-bottom: 1px solid rgba(34, 58, 25, 0.15);
-}
-#err{
-    width:1%;
-    height:1%;
-    background-color:#2c5961;
-    text-align:center;
-    padding:1%;
-    position:absolute;
-    opacity:1;
-    font-size:2px;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    margin:auto;
-    box-shadow:0 0 4px 4px black;
 }
 
-#widok{
-      width:100%;
-      height:100%; 
-      position:absolute;
-      top:0;
-      left:0;
-      background-color: black;
-      opacity: 0.5;
- }
-
-.errorFirst{
-        font-size: 110%;
-        padding-bottom:5%;
+.login_register .button{
+	padding: 1% 5%;
+	background-color: gray;
 }
 
- .errorSecond{
-        font-size: 90%;
+.login_register .label{
+	font-size: 120%;
+	text-align: left;
+}
+
+.student-grades,.teacher-grades{
+	margin: auto;
+	margin-bottom: 2%;
+}
+
+.student-grades .student-name{
+	font-size: 140%;
+	margin-bottom: 3%;
+}
+
+.teacher-grades .subject-name-add{
+	font-size: 140%;
+	margin-bottom: 2%;
+	background-color: rgba(56,94,123,0);
+}
+
+.grades li{
+	background-color: #5385AB;
+}
+
+.grades button{
+	color: gray;
+	padding: 0.5% 1%;
+	margin-left: 1%;
+}
+
+.grades input{
+	color: black;
+}
+
+.grades div{
+	background-color: #476E8D;
+	margin-bottom: 1%;
 
 }
 
-.loadWheel{
-    text-align: center;
+.grades ul div{
+	color: white;
+}
+
+.grades .list-group-horizontal li{
+	background-color: #476E8D;
+	margin-bottom: 1%;
+}
+
+.user-panel{
+	margin: auto;
+	margin-top: 8%;
+}
+
+.user-panel>*{
+	margin:auto;
+}
+
+.user-functions{
+	background-color: #476E8D;
+	height: 400px;
+	margin-bottom: 5%;
+	margin-top: 6%;
+	text-align: center;
+}
+
+.waiting-list{
+	background-color: #476E8D;
+	text-align: center;
+}
+
+.waiting-list>div:first-child{
+	font-size: 140%;
+}
+
+.waiting-element{
+	border-bottom: 2px solid white;
+	margin:auto;
+	font-size: 120%;
+}
+
+.list-name:hover{
+	cursor: pointer;
+}
+
+.spinner-field{
+	text-align: center;
+}
+
+.alert{
+	display: none;
+}
+
+.footer{
+	text-align: center;
+}
+
+#nav-menu li{
+	margin: 0 20px;
+	font-size: 110%;
+}
+
+#nav-menu li:first-child{
+	margin-left: 0;
+}
+
+#nav-menu li:last-child{
+	margin-right: 0;
 }
 
 .loadWheel img{
