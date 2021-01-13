@@ -6,6 +6,17 @@ $(()=> {
         makeTable('teacher');
     }
     if($('#login-form').length){
+        var url = $(location).attr('pathname');
+        var array = url.split('/');
+        var last = array[array.length-1];
+        if(last == 'activated'){
+            $('#modal-alert .modal-body').text(translation.activated);
+            $('#modal-alert').modal('show');
+        }else
+        if(last == 'invalidToken' || last == 'notFound'){
+            $('#modal-alert .modal-body').text(translation.invalidToken);
+            $('#modal-alert').modal('show');
+        }
         $('#login-form').submit((event)=>{
             event.preventDefault();
             loginRegister("login");
@@ -430,6 +441,7 @@ function login(response){
 }
 
 function alertlog(response){
+    console.log(response)
     switch(response.errorCode){
         case "Invalid":
             $('.alert-danger').text(translation.incorrectEmailOrPassword);
@@ -451,6 +463,10 @@ function alertlog(response){
         break;
         case "On list":
             $('.alert-danger').text(translation.onList);
+        break;
+        case "Not active":
+            $('#modal-alert .modal-body').html(translation.shouldActive+' <a href="'+response.activationURL+'">'+translation.click+'</a> '+translation.toActive);
+            $('#modal-alert').modal('show');
         break;
         default:
             $('.alert-danger').text(translation.serverError);

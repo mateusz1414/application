@@ -1,6 +1,26 @@
+[Activated]
+hash = "sha1-8f5c25e890bf0bde0070d683bad97d6f37293434"
+other = "Konto zostało aktywowane."
+
+[AddGrade]
+hash = "sha1-1d5a89c343d71097ec43fe9d90cadf82fa300f5c"
+other = "Dodaj ocenę"
+
 [AddGrades]
 hash = "sha1-d1fa99d1e57516773ebf411c83d5cc3e712847cd"
 other = "Dodaj oceny"
+
+[AddOnWaiting]
+hash = "sha1-3a592963aacddc1f7411dfb6c9dde9ed8b9c6f71"
+other = "Zostałeś dodany na listę oczekujących."
+
+[AllFields]
+hash = "sha1-95ec4e5f593509c9081941596243b22ca3f71023"
+other = "Należy wypełnić wszystkie pola"
+
+[Average]
+hash = "sha1-3bba143523a6b5d8383078c69ec275e3e2311c6a"
+other = "Średnia:"
 
 [BusyEmail]
 hash = "sha1-10562ccf42b5042224628c3d008e15d85c76256e"
@@ -9,6 +29,10 @@ other = "Ten email jest zajęty"
 [Cancel]
 hash = "sha1-77dfd2135f4db726c47299bb55be26f7f4525a46"
 other = "Anuluj"
+
+[Click]
+hash = "sha1-b93ec56608fb302fea7a8019d7c0e8e7239fc033"
+other = "kliknij"
 
 [ComingSoon]
 hash = "sha1-e4115be258dbdd1661c5f1ff14670c19ef1048da"
@@ -46,9 +70,21 @@ other = "Kobieta"
 hash = "sha1-fcfac3efb6ae696fcb48427ff359561932b8f8e8"
 other = "Studenci"
 
+[IncorrectEmail]
+hash = "sha1-63a540364f1809c9945152a7fc553fb46c82ec81"
+other = "Ten email jest niepoprawny"
+
 [IncorrectEmailOrPassword]
 hash = "sha1-788d3735e304fa8e76b78c05be0ac0b3cdf353a9"
 other = "Niepoprawny login lub hasło"
+
+[IncorrectGrade]
+hash = "sha1-81406c640e26bcf216890af69c55ca5770b5479f"
+other = "Ta ocena jest niepoprawna"
+
+[InvalidToken]
+hash = "sha1-0d8350dd39745e37678057fe5f091702e8af5a19"
+other = "Token jest niepoprawny."
 
 [Join]
 hash = "sha1-e0d73143de80d17e82de2e017ac156ca3b9c4e01"
@@ -98,6 +134,10 @@ other = "Lp"
 hash = "sha1-709a23220f2c3d64d1e1d6d18c4d5280f8d82fca"
 other = "Imie"
 
+[OnList]
+hash = "sha1-7b74059d7c701a0c59656b98d3bd4349925b7c22"
+other = "Jesteś na liście."
+
 [Password]
 hash = "sha1-8be3c943b1609fffbfc51aad666d0a04adf83c9d"
 other = "Hasło"
@@ -126,9 +166,21 @@ other = "Wybierz"
 hash = "sha1-a89d64179469a9dcedf347dc7dddae85a2272b3e"
 other = "Wyślij zapytanie"
 
+[ServerError]
+hash = "sha1-aef834ef25dc9d763d82d5314bdb15f95e246f45"
+other = "Przepraszamy, bład po stronie serwera"
+
+[SessionExpired]
+hash = "sha1-944612f12954620bd03a68719b01b28e33b5b28b"
+other = "Twoja sesja wygasła."
+
 [Sex]
 hash = "sha1-e301dd6062f7e9a79975fe8e2d0ba91694c4dbc3"
 other = "Płeć"
+
+[ShouldActive]
+hash = "sha1-6f493c5345bb398fa658945c5f29066601cf0713"
+other = "Musisz aktywować konto,"
 
 [Subject]
 hash = "sha1-0dafc6b02668a661a2241200ba47cfcdc32ca7fe"
@@ -142,6 +194,10 @@ other = "Nazwisko"
 hash = "sha1-f2604f9b72ad42b1d523a572d48c056f91b1cfd4"
 other = "Nauczyciele"
 
+[ToActivate]
+hash = "sha1-75941f9bfc3b6786891c26771add795e16521919"
+other = "aby aktywować."
+
 [ViewGrades]
 hash = "sha1-26ca976fc9b5b5d96eae82dca6fc27f43c0a4d12"
 other = "Przeglądaj oceny"
@@ -150,38 +206,6 @@ other = "Przeglądaj oceny"
 hash = "sha1-a6b2452b81835028c3528e0246510683dac13a95"
 other = "Lista oczekujących"
 
-[AddGrade]
-hash = "sha1-1d5a89c343d71097ec43fe9d90cadf82fa300f5c"
-other = "Dodaj ocenę"
-
-[AddOnWaiting]
-hash = "sha1-3a592963aacddc1f7411dfb6c9dde9ed8b9c6f71"
-other = "Zostałeś dodany na listę oczekujących."
-
-[AllFields]
-hash = "sha1-95ec4e5f593509c9081941596243b22ca3f71023"
-other = "Należy wypełnić wszystkie pola"
-
-[Average]
-hash = "sha1-3bba143523a6b5d8383078c69ec275e3e2311c6a"
-other = "Średnia:"
-
-[IncorrectEmail]
-hash = "sha1-63a540364f1809c9945152a7fc553fb46c82ec81"
-other = "Ten email jest niepoprawny"
-
-[IncorrectGrade]
-hash = "sha1-81406c640e26bcf216890af69c55ca5770b5479f"
-other = "Ta ocena jest niepoprawna"
-
-[OnList]
-hash = "sha1-7b74059d7c701a0c59656b98d3bd4349925b7c22"
-other = "Jesteś na liście."
-
-[ServerError]
-hash = "sha1-aef834ef25dc9d763d82d5314bdb15f95e246f45"
-other = "Przepraszamy, bład po stronie serwera"
-
-[SessionExpired]
-hash = "sha1-944612f12954620bd03a68719b01b28e33b5b28b"
-other = "Twoja sesja wygasła."
+[Close]
+hash = "sha1-bbfa773e5a63a5ea58c9b6207e608ca0120e592a"
+other = "Zamknij"

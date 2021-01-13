@@ -68,12 +68,14 @@ func Register(c *gin.Context) {
 }
 
 func Login(c *gin.Context) {
+	activationStatus := c.Param("status")
 	translation, _ := c.Get("translation")
 	language := loginregister.GetLanguage(c)
 	c.HTML(200, "contents/login", gin.H{
-		"user":        loginregister.IsLogined(c),
-		"language":    language,
-		"translation": translation.(map[string]string),
+		"user":             loginregister.IsLogined(c),
+		"language":         language,
+		"translation":      translation.(map[string]string),
+		"activationStatus": activationStatus,
 	})
 }
 

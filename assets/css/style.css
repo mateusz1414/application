@@ -34,6 +34,14 @@ a{
 	color: white;
 }
 
+#modal-alert a{
+	color: #5385AB;
+}
+
+#modal-alert .modal-content{
+	font-size: 107%;
+}
+
 .modal-content,.modal-dialog{
 	background-color: #3d3e3f;
 }

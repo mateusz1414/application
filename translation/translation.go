@@ -297,6 +297,47 @@ func LoadTranslation(localizer *i18n.Localizer) map[string]string {
 			Other: "Oh no, we have some problem.",
 		},
 	})
-
+	translated["ShouldActive"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "ShouldActive",
+			Other: "You must active account,",
+		},
+	})
+	translated["Click"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Click",
+			Other: "click",
+		},
+	})
+	translated["ToActivate"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "ToActivate",
+			Other: "to activate.",
+		},
+	})
+	translated["ToActivate"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "ToActivate",
+			Other: "to activate.",
+		},
+	})
+	translated["InvalidToken"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "InvalidToken",
+			Other: "Token is invalid.",
+		},
+	})
+	translated["Activated"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Activated",
+			Other: "Account has been activated.",
+		},
+	})
+	translated["Close"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "Close",
+			Other: "Close",
+		},
+	})
 	return translated
 }

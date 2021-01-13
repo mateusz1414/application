@@ -80,6 +80,7 @@ func direct(language *gin.RouterGroup) {
 	language.GET("/editstudentform/:studentID/", pages.EditForm)
 	language.GET("/register/", authMiddleWeare(nil), pages.Register)
 	language.GET("/login/", authMiddleWeare(nil), pages.Login)
+	language.GET("/login/:status", authMiddleWeare(nil), pages.Login)
 	language.GET("/getgrades/", authMiddleWeare([]string{"student"}), pages.GetGrades)
 	language.GET("/addgrades/", authMiddleWeare([]string{"teacher"}), pages.AddGrades)
 	language.GET("/modify/", authMiddleWeare([]string{"dean"}), pages.Modify)

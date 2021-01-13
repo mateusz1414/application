@@ -17,7 +17,7 @@
                         
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn-secondary" data-bs-dismiss="modal">Zamknij</button>
+                        <button type="button" class="btn-secondary" data-bs-dismiss="modal">{{index .translation "Close"}}</button>
                     </div>
                 </div>
             </div>
@@ -98,6 +98,11 @@
             allFields: '{{index .translation "AllFields"}}',
             onList: '{{index .translation "OnList"}}',
             serverError: '{{index .translation "ServerError"}}',
+            shouldActive: '{{index .translation "ShouldActive"}}',
+            click: '{{index .translation "Click"}}',
+            toActive: '{{index .translation "ToActivate"}}',
+            activated: '{{index .translation "Activated"}}',
+            invalidToken: '{{index .translation "InvalidToken"}}',
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
