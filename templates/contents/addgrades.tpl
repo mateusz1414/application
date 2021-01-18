@@ -16,3 +16,6 @@
     </div>
 </div>
 {{end}}
+{{define "script"}}
+    <script type="text/javascript" src="/js/grades.js"></script>
+{{end}}

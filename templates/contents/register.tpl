@@ -39,3 +39,6 @@
     </div>
 </div>
 {{end}}
+{{define "script"}}
+    <script type="text/javascript" src="/js/loginregister.js"></script>
+{{end}}

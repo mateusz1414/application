@@ -18,3 +18,5 @@
     </table>
 </div>
 {{end}}
+{{define "script"}}
+{{end}}

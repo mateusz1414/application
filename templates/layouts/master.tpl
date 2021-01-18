@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="{{.language}}">
     <head>
         {{include "layouts/head"}}
     </head>
@@ -109,4 +109,5 @@
     <script type="text/javascript" src="/js/config.js"></script>
     <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
+    {{template "script"}}
 </html>

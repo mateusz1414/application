@@ -6,35 +6,37 @@
                 <h5>{{index .translation "EditStudent"}}</h5>
             </div>
             <div class="modal-body">
-                <input type="hidden" class="waiting-id">
-                <div class="col">
-                    <div class="alert alert-danger col-10 m-auto text-center"></div>
-                </div>
-                <div class="row">
-                    <div class="col col-md-4">{{index .translation "Name"}}</div><div class="col col-md-7"><input type="text" class="waiting-name"></div>
-                </div>
-                <div class="row">
-                    <div class="col col-md-4">{{index .translation "Surname"}}</div><div class="col col-md-7"><input type="text" class="waiting-surname"></div>
-                </div>
-                <div class="row">
-                    <div class="col col-md-4">{{index .translation "DOB"}}</div><div class="col col-md-7"><input type="date" class="waiting-dob"></div>
-                </div>
-                <div class="row">
-                    <div class="col col-md-4">{{index .translation "Department"}}</div><div class="col col-md-7">
-                        <select class="waiting-departament">
-                            <option value="undefined" selected>{{index .translation "Select"}}</option>
-                        </select>
+                <form>
+                    <input type="hidden" class="waiting-id">
+                    <div class="col">
+                        <div class="alert alert-danger col-10 m-auto text-center"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col col-md-4">{{index .translation "Sex"}}</div><div class="col col-md-7">
-                        <select class="waiting-sex">
-                            <option value="undefined" selected>{{index .translation "Select"}}</option>
-                            <option value="0">{{index .translation "Male"}}</option>
-                            <option value="1">{{index .translation "Female"}}</option>
-                        </select>
+                    <div class="row">
+                        <div class="col col-md-4">{{index .translation "Name"}}</div><div class="col col-md-7"><input type="text" class="waiting-name"></div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col col-md-4">{{index .translation "Surname"}}</div><div class="col col-md-7"><input type="text" class="waiting-surname"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-4">{{index .translation "DOB"}}</div><div class="col col-md-7"><input type="date" class="waiting-dob"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-4">{{index .translation "Department"}}</div><div class="col col-md-7">
+                            <select class="waiting-departament">
+                                <option value="undefined" selected>{{index .translation "Select"}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-4">{{index .translation "Sex"}}</div><div class="col col-md-7">
+                            <select class="waiting-sex">
+                                <option value="undefined" selected>{{index .translation "Select"}}</option>
+                                <option value="0">{{index .translation "Male"}}</option>
+                                <option value="1">{{index .translation "Female"}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >{{index .translation "Cancel"}}</button>
@@ -64,4 +66,6 @@
         </tbody>
     </table>
 </div>
+{{end}}
+{{define "script"}}
 {{end}}

@@ -27,23 +27,39 @@ func main() {
 	bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
 	bundle.LoadMessageFile("translation/languages/active.pl.toml")
 	server := gin.Default()
+
+	//temlates
 	server.HTMLRender = gintemplate.New(gintemplate.TemplateConfig{
-		Root:         "templates",
-		Extension:    ".tpl",
-		Master:       "layouts/master",
-		Partials:     []string{"page-aside/rightpanel"},
+		Root:      "templates",
+		Extension: ".tpl",
+		Master:    "layouts/master",
+		//Partials:     []string{"page-aside/rightpanel"},
 		DisableCache: false,
 	})
+
+	//static files
 	server.Static("/css", "./assets/css")
 	server.Static("/js", "./assets/js")
+
+	//session
 	store := cookie.NewStore([]byte("thisIsGoLanguage"))
+	store.Options(sessions.Options{
+		Path:   "/",
+		MaxAge: 3600,
+	})
 	server.Use(sessions.Sessions("go_session_id", store))
+
+	//cors
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{serverAddress}
 	server.Use(cors.New(config))
+
+	//session directores
 	server.GET("session/:key", studentsactions.GetSession)
 	server.DELETE("session/:key", studentsactions.ClearKey)
 	server.POST("session/", studentsactions.SetSession)
+
+	//languages
 	server.Use(getLanguage(bundle))
 	polish := server.Group("pl")
 	{
@@ -53,6 +69,8 @@ func main() {
 	{
 		direct(english)
 	}
+
+	//server start
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -67,6 +85,14 @@ func loginCheck() gin.HandlerFunc {
 		fmt.Println("JWT to '" + jwt.(string) + "'")
 		c.Set("jwt", jwt.(string))
 		c.Next()
+	}
+}
+
+func sess() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		session := sessions.Default(c)
+		//session.Options(sessions.Options{MaxAge: 3600})
+		session.Save()
 	}
 }
 
@@ -86,11 +112,6 @@ func direct(language *gin.RouterGroup) {
 	language.GET("/modify/", authMiddleWeare([]string{"dean"}), pages.Modify)
 	language.GET("/user/", authMiddleWeare([]string{"teacher", "student", "dean", "user"}), pages.UserPanel)
 	language.GET("/logout/", studentsactions.Logout)
-	/*user := language.Group("user")
-	{
-		user.POST("/register/", loginregister.Register)
-		user.POST("/login/", loginregister.Login)
-	}*/
 }
 
 func authMiddleWeare(permisssion []string) gin.HandlerFunc {

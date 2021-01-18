@@ -5,42 +5,6 @@ $(()=> {
     if($('.teacher-table').length){
         makeTable('teacher');
     }
-    if($('#login-form').length){
-        var url = $(location).attr('pathname');
-        var array = url.split('/');
-        var last = array[array.length-1];
-        if(last == 'activated'){
-            $('#modal-alert .modal-body').text(translation.activated);
-            $('#modal-alert').modal('show');
-        }else
-        if(last == 'invalidToken' || last == 'notFound'){
-            $('#modal-alert .modal-body').text(translation.invalidToken);
-            $('#modal-alert').modal('show');
-        }
-        $('#login-form').submit((event)=>{
-            event.preventDefault();
-            loginRegister("login");
-        })
-    }
-    if($('#register-form').length){
-        $('#register-form').submit((event)=>{
-            event.preventDefault();
-            loginRegister("register");
-        })
-    }
-    if($('.student-grades').length){
-        url = config.apiAddress+'student/'+userID;
-        createSpinner($('.spinner-field'));
-        sendHttpRequest('GET',url,null,null,generateGrades);
-        //loadStudents(createRow,"teacher","getAll",$('.teacher-table'));
-    }
-    if($('.teacher-grades').length){
-        url = config.apiAddress+'grade/getAll';
-        createSpinner($('.spinner-field'));
-        getJWT((response)=>{
-            sendHttpRequest("GET",url,null,response.jwt,addGradeList)
-        });
-    }
     if($('#waiting-modal').length){
         generateDepartamentsSelect($('.waiting-departament'));
         studentModal("sendRequest");
@@ -48,9 +12,6 @@ $(()=> {
     if($('#update-modal').length){
         generateDepartamentsSelect($('.waiting-departament'));
         studentModal('');
-    }
-    if($('.dean-functions').length){
-        applicationListRequest();
     }
 });
 
@@ -63,6 +24,7 @@ function studentModal(what){
             departamentID: parseInt($('.waiting-departament').val()),
             sex: parseInt($('.waiting-sex').val()),
         }
+        console.log(body);
         if(body.name == '' || body.surname == '' || body.dob == '' || body.departament == 'undefined' || body.sex == 'undefined')
         {
             alertlog({errorCode: "Not all"});
@@ -93,13 +55,6 @@ function makeTable(who){
     url = config.apiAddress+who+'/getAll';
     createSpinner($('.spinner-col'));
     sendHttpRequest('GET',url,null,null,generateTable)
-}
-
-function applicationListRequest(){
-    getJWT(response=>{
-        var url = config.apiAddress+'management/applicationList' ;
-        sendHttpRequest('GET',url,null,response.jwt,createApplicationList)
-    });
 }
 
 $('#joinToWaitingList').click(()=>{
@@ -208,14 +163,16 @@ function createRow(contentTable,person,index,loadWheel){
         var deleteBtn = $('<td><button class="btn btn-secondary">'+translation.delete+'</button></td>')
         tableRow.append(deleteBtn);
         editBtn.find('.btn').click(()=>{
-            console.log($('.waiting-departament option[value='+person.departament.departamentID+']'));
-            $('#update-modal').modal('show');
+            $('.waiting-departament option').removeAttr("selected");
+            $('.waiting-sex option').removeAttr("selected");
+            $('#update-modal form')[0].reset();
             $('.waiting-name').val(person.name);
             $('.waiting-surname').val(person.surname);
             $('.waiting-dob').val(person.dob);
             $('.waiting-id').val(person.studentID);
             $('.waiting-departament option[value='+person.departament.departamentID+']').attr('selected','selected');
             $('.waiting-sex option[value='+person.sex+']').attr('selected','selected');
+            $('#update-modal').modal('show');
         });
         deleteBtn.find('.btn').click(()=>{
             getJWT(response=>{
@@ -228,67 +185,6 @@ function createRow(contentTable,person,index,loadWheel){
     }
 }
 
-function createApplicationList(response){
-    response.students.forEach(person=>{
-        var element = $('<div class="waiting-element col-12 row"></div>');
-        var name ='';
-        if(person.name =='' && person.surname ==''){
-            name = 'Brak nazwy'
-        }else
-        {
-            name = person.name+' '+person.surname;
-        }
-        var col = $('<div class="col col-8 list-name" data-bs-toggle="collapse" href="#collapse-user-'+person.studentID+'">'+name+'</div>');
-        var btns = $('<div class="col col-2"><button type="button" class="btn btn-success">✔</button></div><div class="col col-2"><button type="button" class="btn btn-danger">X</button></div>');
-        var collapse =$('<div class="collapse" id="collapse-user-'+person.studentID+'"></div>'); 
-        for(var key in person){
-            var index=false;
-            if(key=='dob' || key=='sex' || key=='departament'){
-                var value =person[key];
-                switch(key){
-                    case 'sex':
-                        if(value==0){
-                            value=translation.male;
-                        }else
-                        {
-                            value=translation.female;
-                        }
-                    break;
-                    case 'departament':
-                        value = value.name;
-                    break;
-                }
-                one = $('<div class="row"><div class="col">'+translation[key]+'</div><div class="col">'+value+'</div></div>');
-                collapse.append(one)
-            }
-        }
-        element.append(col);
-        element.append(btns);
-        element.append(collapse);
-        $('.waiting-list').append(element);
-        btns.find('.btn-success').click(()=>{
-            getJWT(response=>{
-                var url = config.apiAddress+'management/'+person.studentID;
-                sendHttpRequest('PUT',url,null,response.jwt,()=>{
-                    $('.waiting-list').text('');
-                    $('.waiting-list').append('<div class="col waiting-element">'+translation.waitingList+'</div>');
-                    applicationListRequest();
-                });
-            });
-        });
-        btns.find('.btn-danger').click(()=>{
-            getJWT(response=>{
-                var url = config.apiAddress+'management/'+person.studentID;
-                sendHttpRequest('DELETE',url,null,response.jwt,()=>{
-                    $('.waiting-list').text('');
-                    $('.waiting-list').append('<div class="col waiting-element">'+translation.waitingList+'</div>');
-                    applicationListRequest();
-                });
-            });
-        });
-    });
-}
-
 function getLanguage(){
     var url = $(location).attr('pathname');
     var language = url.split("/")[1];
@@ -298,146 +194,6 @@ function getLanguage(){
 function getJWT(next){
     var url = config.serverAddress + 'session/jwt';
     sendHttpRequest("GET",url,null,null,next);
-}
-
-function generateGrades(response){
-    var student = response.students[0];
-    $('.student-name').text(student.name + ' ' + student.surname);
-    $('.student-name').removeClass('spinner-field');
-    var url = config.apiAddress + 'grade/myGrades';
-    getJWT((response)=>{
-        sendHttpRequest("GET",url,null,response.jwt,createGradesList);
-    });  
-}
-
-function createGradesList(response){
-    var subjects = response.subjects;
-    subjects.forEach(subject=>{
-        var spinner = $('.spinner-field')
-        var li = $('<li class="list-group-item list-group-item-dark"></li>')
-        var subjectName = $('<div class="list-group-item list-group-item-secondary subject">'+subject.name+'</div>');
-        var grades = $('<ul class="list-group list-group-horizontal"></ul>');
-        var sum = 0;
-        spinner.before(li);
-        li.append(subjectName);
-        li.append(grades);
-        subject.grades.forEach(grade=>{
-            var gradeLi = $('<li class="list-group-item list-group-item-dark">'+grade.value+'</li>');
-            grades.append(gradeLi);
-            sum+=grade.value;
-        });
-        var average = $('<div class="list-group-item list-group-item-secondary average">'+translation.average+' '+sum/subject.grades.length+'</div>');
-        li.append(average);
-    });
-    $('.spinner-field').remove();
-}
-
-
-function addGradeList(response){
-    $('.subject-name-add').text(response.subjectName);
-    $('.subject-name-add').removeClass('spinner-field');
-    var spinner = $('.spinner-field');
-    response.students.forEach(student=>{
-        var  li = $('<li class="list-group-item list-group-item-dark"></li>');
-        var div = $('<div class="list-group-item list-group-item-dark student"></div>');
-        var row = $('<div class="row"></div>');
-        var person = $('<div class="col col-md-6">'+student.name+' '+student.surname+'</div>');
-        var addGrade = $('<div class="col col-md-6 text-end"><input id="student-'+student.studentID+'-input" type="number" min="1" max="6"><button id="student-'+student.studentID+'" class="add-grade-button">'+translation.addGrade+'</button></div>');
-        var ul = $('<ul class="list-group list-group-horizontal" id="student-'+student.studentID+'-ul"></ul>');
-        spinner.before(li);
-        li.append(div);
-        div.append(row);
-        row.append(person);
-        row.append(addGrade);
-        var sum = ulWriteGrades(student.grades,ul);
-        li.append(ul);
-        var avg = sum/student.grades.length;
-        if(isNaN(avg)){
-            avg=0;
-        }
-        var average = $('<div class="list-group-item list-group-item-dark average" id="student-'+student.studentID+'-avg">'+translation.average+' '+avg+'</div>');
-        li.append(average);
-        $('#student-'+student.studentID).click(event=>{
-            var studentID = event.target.id.split('-')[1];
-            var input = $('#'+event.target.id+'-input');
-            var grade = input.val();
-            if(grade<1 || grade>5){
-                $('#modal-alert .modal-body').text(translation.incorrectGrade);
-                $('#modal-alert').modal('show');
-                return;
-            }
-            var url = config.apiAddress+"grade/";
-            var body = {
-                value: parseInt(grade),
-                studentID: parseInt(studentID),
-            }
-            getJWT((response)=>{
-                sendHttpRequest("POST",url,body,response.jwt,generateStudentGrade,showModalGrade)
-            })
-        });
-    });
-    spinner.remove();
-}
-
-function ulWriteGrades(grades,ul){
-    var sum=0;
-    grades.forEach(grade=>{
-        var point = $('<li class="list-group-item list-group-item-dark">'+grade.value+'</li>');
-        sum += grade.value;
-        ul.append(point);
-    });
-    return sum;
-}
-
-function generateStudentGrade(response){
-    var ul = $('#student-'+response.studentID+'-ul');
-    ul.text('');
-    var avg = ulWriteGrades(response.studentGrades,ul)/response.studentGrades.length;
-    $('#student-'+response.studentID+'-avg').text(translation.average+' '+avg);
-    
-}
-
-function showModalGrade(response){
-    $('#modal-alert .modal-body').text(translation.incorrectGrade);
-    $('#modal-alert').modal(response.message);
-}
-
-function loginRegister(what){
-    user = {
-        email:  $('.email').val(),
-        password: $('.password').val(),
-        confirmpassword: $('.confirm-password').val(),
-    };
-    var url = config.apiAddress+'user/'+what;
-    sendHttpRequest('POST',url,user,null,login,alertlog);
-}
-
-function login(response){
-    if(response.message=="Logged"){
-        var body = [{
-            'key': 'jwt',
-            'value': response.authToken
-        },
-        {
-            'key': 'email',
-            'value': response.email
-        },
-        {
-            'key': 'userID',
-            'value': String(response.userID)
-        },
-        {
-            'key': 'permissions',
-            'value': response.permissions
-        }
-        ];
-        sendHttpRequest('POST',config.serverAddress+'session/',body,null,()=>{
-            $(location).prop('href',config.serverAddress+getLanguage()+'/');
-        });
-    }else
-    {
-        $(location).prop('href',config.serverAddress+getLanguage()+'/login/');
-    }
 }
 
 function alertlog(response){
