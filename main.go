@@ -42,7 +42,7 @@ func main() {
 	server.Static("/js", "./assets/js")
 
 	//session
-	store := cookie.NewStore([]byte("thisIsGoLanguage"))
+	store := cookie.NewStore([]byte("thisIsGoLanguageaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadddddddddddddddddddddddddddd"))
 	store.Options(sessions.Options{
 		Path:   "/",
 		MaxAge: 3600,
