@@ -20,7 +20,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-var serverAddress = "http://localhost:8080"
+var serverAddress = "http://35.198.132.61:8080"
 
 func main() {
 	bundle := i18n.NewBundle(language.English)
@@ -42,7 +42,7 @@ func main() {
 	server.Static("/js", "./assets/js")
 
 	//session
-	store := cookie.NewStore([]byte("thisIsGoLanguageaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadddddddddddddddddddddddddddd"))
+	store := cookie.NewStore([]byte("thisIsGoLanguage"))
 	store.Options(sessions.Options{
 		Path:   "/",
 		MaxAge: 3600,
