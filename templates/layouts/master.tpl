@@ -3,8 +3,7 @@
     <head>
         {{include "layouts/head"}}
     </head>
-    <body>
-        <!--hello world-->
+    <body class="xyz">
         <header class="page-header col-sm-9">
             <div class="banner">
                 <h1>Studenci</h1>
