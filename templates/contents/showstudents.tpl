@@ -3,7 +3,7 @@
     <table class="content-table student-table table ">
         <thead>
             <tr>
-                <th scope="col">{{index .translation "NO"}}dziala</th>
+                <th scope="col">{{index .translation "NO"}}</th>
                 <th scope="col">{{index .translation "Name"}}</th>
                 <th scope="col">{{index .translation "Surname"}}</th>
                 <th scope="col">{{index .translation "DOB"}}</th>
