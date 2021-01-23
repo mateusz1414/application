@@ -51,7 +51,7 @@ func main() {
 
 	//cors
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{serverAddress}
+	config.AllowAllOrigins = true
 	server.Use(cors.New(config))
 
 	//session directores
