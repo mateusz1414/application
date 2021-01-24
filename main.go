@@ -20,7 +20,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-var serverAddress = "http://studentscode.online/"
+var serverAddress = "https://studentscode.online/"
 
 func main() {
 	bundle := i18n.NewBundle(language.English)
