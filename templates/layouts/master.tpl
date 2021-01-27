@@ -11,11 +11,6 @@
                     {{template "content" .}}
                 </div>
             </section>
-            <aside>
-                <div class="page-aside">
-                    {{template "page-aside" .}}
-                </div>
-            </aside>
         </main>
         {{include "layouts/footer"}}
     </body>

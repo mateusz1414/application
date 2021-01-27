@@ -41,3 +41,13 @@ func GetLanguage(c *gin.Context) string {
 	}
 	return language.(string)
 }
+
+func Permission(c *gin.Context) string {
+	store := ginsession.FromContext(c)
+	permission, ok := store.Get("permission")
+	if !ok {
+		return ""
+	}
+	return permission.(string)
+
+}

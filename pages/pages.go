@@ -13,6 +13,7 @@ func ShowStudents(c *gin.Context) {
 		"isLogined":   loginregister.IsLogined(c),
 		"language":    loginregister.GetLanguage(c),
 		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
 	})
 }
 
@@ -23,6 +24,7 @@ func AddStudents(c *gin.Context) {
 		"isLogined":   loginregister.IsLogined(c),
 		"language":    loginregister.GetLanguage(c),
 		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
 	})
 }
 
@@ -33,6 +35,7 @@ func DeleteStudents(c *gin.Context) {
 		"isLogined":   loginregister.IsLogined(c),
 		"language":    loginregister.GetLanguage(c),
 		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
 	})
 }
 
@@ -43,6 +46,7 @@ func EditStudents(c *gin.Context) {
 		"isLogined":   loginregister.IsLogined(c),
 		"language":    loginregister.GetLanguage(c),
 		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
 	})
 }
 
@@ -58,6 +62,7 @@ func RegisterStudents(c *gin.Context) {
 		"isLogined":   false,
 		"language":    language,
 		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
 	})
 }
 
@@ -73,5 +78,56 @@ func EditForm(c *gin.Context) {
 		"isLogined":   true,
 		"language":    language,
 		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
+	})
+}
+
+func ShowDepartaments(c *gin.Context) {
+	translation, _ := c.Get("translation")
+	c.HTML(200, "contents/departaments", gin.H{
+		"isLogined":   loginregister.IsLogined(c),
+		"language":    loginregister.GetLanguage(c),
+		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
+	})
+}
+
+func ShowTeachers(c *gin.Context) {
+	translation, _ := c.Get("translation")
+	c.HTML(200, "contents/teachers", gin.H{
+		"isLogined":   loginregister.IsLogined(c),
+		"language":    loginregister.GetLanguage(c),
+		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
+	})
+}
+
+func ShowGrades(c *gin.Context) {
+	translation, _ := c.Get("translation")
+	c.HTML(200, "contents/grades", gin.H{
+		"isLogined":   loginregister.IsLogined(c),
+		"language":    loginregister.GetLanguage(c),
+		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
+	})
+}
+
+func ShowGradesForTeacher(c *gin.Context) {
+	translation, _ := c.Get("translation")
+	c.HTML(200, "contents/gradest", gin.H{
+		"isLogined":   loginregister.IsLogined(c),
+		"language":    loginregister.GetLanguage(c),
+		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
+	})
+}
+
+func ShipmentPermission(c *gin.Context) {
+	translation, _ := c.Get("translation")
+	c.HTML(200, "contents/permission", gin.H{
+		"isLogined":   loginregister.IsLogined(c),
+		"language":    loginregister.GetLanguage(c),
+		"translation": translation.(map[string]string),
+		"permission":  loginregister.Permission(c),
 	})
 }

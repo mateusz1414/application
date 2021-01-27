@@ -51,6 +51,30 @@ func LoadTranslation(localizer *i18n.Localizer) map[string]string {
 			Other: "Register",
 		},
 	})
+	translated["MenuPermission"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "MenuPermission",
+			Other: "Permission",
+		},
+	})
+	translated["MenuGrades"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "MenuGrades",
+			Other: "Grades",
+		},
+	})
+	translated["MenuTeachers"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "MenuTeachers",
+			Other: "Teachers",
+		},
+	})
+	translated["MenuDepartaments"] = localizer.MustLocalize(&i18n.LocalizeConfig{
+		DefaultMessage: &i18n.Message{
+			ID:    "MenuDepartaments",
+			Other: "Departaments",
+		},
+	})
 	translated["Display#"] = localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
 			ID:    "Display#",

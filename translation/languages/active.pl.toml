@@ -94,6 +94,10 @@ other = "Niepoprawne dane logowania"
 hash = "sha1-a53667ac29a5cd0fc5118acad692f84c01cc13ab"
 other = "Login jest zbyt krótki"
 
+[LogoutButton]
+hash = "sha1-e43d612e11f1568f2373e719d4c4b08dcecdc7cc"
+other = "Wyloguj"
+
 [MenuAdd]
 hash = "sha1-8e8428e85c661f03dd33db8f12b20a010ab5be5e"
 other = "Dodawanie"
@@ -138,6 +142,18 @@ other = "Poprawnie zarejetrowano"
 hash = "sha1-c7e13050fa9d0e2a21d12b6f6cc655f3751e3dc3"
 other = "Użytkownik już istnieje"
 
-[LogoutButton]
-hash = "sha1-e43d612e11f1568f2373e719d4c4b08dcecdc7cc"
-other = "Wyloguj"
+[MenuDepartaments]
+hash = "sha1-94bcc93a20e7571cf17c7db669dec63c303e192e"
+other = "Wydziały"
+
+[MenuGrades]
+hash = "sha1-7e15a1e710aa86ac004956222fd15ab2383ef5b2"
+other = "Oceny"
+
+[MenuPermission]
+hash = "sha1-1785713451d01948bc96b1f6cd729251ba4dfe64"
+other = "Pozowloenia"
+
+[MenuTeachers]
+hash = "sha1-f2604f9b72ad42b1d523a572d48c056f91b1cfd4"
+other = "Nauczyciele"
