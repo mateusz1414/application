@@ -42,14 +42,16 @@ func GetSession(c *gin.Context) {
 
 //SetSession set values in session
 func SetSession(c *gin.Context) {
-	session := Session{}
+	session := []Session{}
 	err := c.ShouldBindJSON(&session)
 	if err != nil {
 		c.JSON(500, gin.H{})
 		return
 	}
 	store := ginsession.FromContext(c)
-	store.Set(session.Key, session.Value)
+	for _, value := range session {
+		store.Set(value.Key, value.Value)
+	}
 	err = store.Save()
 	if err != nil {
 		c.JSON(500, gin.H{})

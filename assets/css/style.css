@@ -65,7 +65,7 @@ main{
 
 section{
     background-color: #18649e;
-    width: 80%;
+    width: 100%;
     float: left;
     height: 100%; 
     overflow-x: hidden;
@@ -142,14 +142,13 @@ footer{
 }
 
 .login-table{
-    margin: 10% 2%;
+    margin: auto;
     border-collapse: collapse;
     font-size: 90%;
     min-width: 40%;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        width: 95%;
 }
 
 .login-table thead tr{

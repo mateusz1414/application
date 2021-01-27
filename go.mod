@@ -13,4 +13,5 @@ require (
 	github.com/nicksnyder/go-i18n v1.10.1
 	github.com/nicksnyder/go-i18n/v2 v2.1.1
 	golang.org/x/text v0.3.4
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )

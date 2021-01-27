@@ -76,6 +76,11 @@ func direct(language *gin.RouterGroup) {
 	language.GET("/editstudents/", pages.EditStudents)
 	language.GET("/editstudentform/:studentID/", pages.EditForm)
 	language.GET("/register/", pages.RegisterStudents)
+	language.GET("/departament/", pages.ShowDepartaments)
+	language.GET("/teacher/", pages.ShowTeachers)
+	language.GET("/grade/", pages.ShowGrades)
+	language.GET("/grades/", pages.ShowGradesForTeacher)
+	language.GET("/dean/", pages.ShipmentPermission)
 	/*user := language.Group("user")
 	{
 		user.POST("/register/", loginregister.Register)
