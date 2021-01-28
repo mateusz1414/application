@@ -6,6 +6,8 @@ import (
 	"application/studentsactions"
 	"application/translation"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"os"
 	"strings"
 
@@ -59,6 +61,42 @@ func main() {
 	server.DELETE("session/:key", studentsactions.ClearKey)
 	server.POST("session/", studentsactions.SetSession)
 
+	//OAuth directory
+	file, err := ioutil.ReadFile("./config/credentials.json")
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	server.GET("/auth/:provider", sendConfig("credjson", file), loginregister.OauthLogin)
+
+	/*c	onf := &oauth2.Config{
+		ClientID:     cred.Cid,
+		ClientSecret: cred.Csecret,
+		RedirectURL:  "http://localhost:8080/auth/google/",
+		Scopes: []string{
+			"https://www.googleapis.com/auth/userinfo.email",
+		},
+		Endpoint: google.Endpoint,
+	}
+
+	fmt.Println(conf.AuthCodeURL("run"))
+	server.GET("/auth/:provider", func(c *gin.Context) {
+		tok, err := conf.Exchange(oauth2.NoContext, c.Query("code"))
+		if err != nil {
+			fmt.Println("!!!!!!!!!!!!!!!!!!!!!")
+			return
+		}
+		fmt.Println(tok)
+		client := conf.Client(oauth2.NoContext, tok)
+		resp, err := client.Get("https://www.googleapis.com/oauth2/v3/userinfo")
+		if err != nil {
+			fmt.Println("!!!!!!!!!!!!!!!!!!!!!")
+			return
+		}
+		defer resp.Body.Close()
+		data, _ := ioutil.ReadAll(resp.Body)
+		log.Println("Resp body: ", string(data))
+	})*/
+
 	//languages
 	server.Use(getLanguage(bundle))
 	polish := server.Group("pl")
@@ -78,12 +116,9 @@ func main() {
 	server.Run(":" + port)
 }
 
-func loginCheck() gin.HandlerFunc {
+func sendConfig(name string, file []byte) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		session := sessions.Default(c)
-		jwt := session.Get("jwt")
-		fmt.Println("JWT to '" + jwt.(string) + "'")
-		c.Set("jwt", jwt.(string))
+		c.Set(name, file)
 		c.Next()
 	}
 }
@@ -112,6 +147,12 @@ func direct(language *gin.RouterGroup) {
 	language.GET("/modify/", authMiddleWeare([]string{"dean"}), pages.Modify)
 	language.GET("/user/", authMiddleWeare([]string{"teacher", "student", "dean", "user"}), pages.UserPanel)
 	language.GET("/logout/", studentsactions.Logout)
+}
+
+func sendCredentials(cred loginregister.Credentials) gin.HandlerFunc {
+	return func(c *gin.Context) {
+
+	}
 }
 
 func authMiddleWeare(permisssion []string) gin.HandlerFunc {

@@ -27,7 +27,9 @@ a{
 }
 
 .banner{
-	padding-top:2%;
+	padding-top: 52px;
+	background-color: #5385AB;
+	height: 185px;
 }
 
 .modal h5,.modal .row div{
@@ -72,17 +74,17 @@ a{
 }
 
 .page-header{
-	height: 20%;
-	padding-top: 1.5%;
+	height: 240px;;
+	padding-top: 20px;
 	margin: auto;
 	margin-bottom: 1%;
 }
 
 .page-main-section{
-	height: 70%;
 	margin: auto;
 	background-color: rgba(56,94,123,0.8);
 	overflow: auto;
+	min-height: 600px;
 }
 
 .content-table{
@@ -95,11 +97,6 @@ a{
 
 .content-table th{
 	text-shadow: 2px 2px 4px black;
-}
-
-.banner{
-	background-color: #5385AB;
-	height: 80%;
 }
 
 .nav-main,.nav-user{
@@ -127,6 +124,20 @@ a{
 .login_register .label{
 	font-size: 120%;
 	text-align: left;
+}
+
+.button-login{
+	margin-left: 30%;
+}
+
+.auth-group{
+	height: 46px;
+	font-size: 20px;
+}
+
+.auth-group .btn{
+	background-color: white;
+	color: black;
 }
 
 .student-grades,.teacher-grades{
@@ -220,6 +231,7 @@ a{
 
 .footer{
 	text-align: center;
+	height: 50px;
 }
 
 #nav-menu li{
