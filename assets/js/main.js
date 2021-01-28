@@ -229,3 +229,4 @@ function alertlog(response){
     }
     $('.alert-danger').show();
 }
+

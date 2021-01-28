@@ -38,6 +38,9 @@
                     <a href="/{{.language}}/register/">{{index .translation "RegisterNoun"}}</a>
                 </li>
             {{end}}
+                <li class="nav-exit nav-item">
+                    <div data-bs-toggle="collapse" data-bs-target="#nav-menu">Powrót</div>
+                </li>
         </ul>
     </div>
     <!--tłumaczenie aria-label-->
