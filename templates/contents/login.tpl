@@ -30,7 +30,7 @@
         <div class="auth-group">
             <div class="row">
                 <div class="col-md-10 m-auto">
-                  <a class="btn col-8 col-md-10 btn-outline-light" href="#" role="button">
+                  <a class="btn col-8 col-md-10 btn-outline-light" href="/a" role="button">
                     <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
                     Google
                   </a>
