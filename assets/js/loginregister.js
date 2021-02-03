@@ -22,7 +22,17 @@ $(()=>{
             loginRegister("register");
         })
     }
+    if($('.oauth-login').length){
+        addAddress($('.oauth-login'));
+    }
 });
+
+function addAddress(elements){
+    for(var i=0;i<elements.length;i++){
+        var element = elements[i];
+        element.setAttribute("href",config.apiAddress+"user/oauth/authorize/"+element.dataset.provider);
+    }
+}
 
 function loginRegister(what){
     user = {
