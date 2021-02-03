@@ -1,7 +1,6 @@
 package studentsactions
 
 import (
-	"application/loginregister"
 	"fmt"
 
 	"github.com/gin-contrib/sessions"
@@ -51,14 +50,25 @@ func SetSession(c *gin.Context) {
 		c.JSON(500, change)
 		return
 	}
+	err = SaveSession(change, c)
+	if err != nil {
+		c.JSON(200, gin.H{
+			"message": "filed",
+		})
+		return
+	}
+	c.JSON(200, gin.H{
+		"message": "success",
+	})
+}
+
+func SaveSession(change []Session, c *gin.Context) error {
 	session := sessions.Default(c)
 	for _, element := range change {
 		session.Set(element.Key, element.Value)
 	}
 	session.Save()
-	c.JSON(200, gin.H{
-		"message": "success",
-	})
+	return nil
 }
 
 //ClearKey remove value in session
@@ -75,6 +85,14 @@ func Logout(c *gin.Context) {
 	session.Delete("userID")
 	session.Delete("email")
 	session.Save()
-	language := loginregister.GetLanguage(c)
+	language := getLanguage(c)
 	c.Redirect(302, "/"+language+"/")
+}
+
+func getLanguage(c *gin.Context) string {
+	language, ok := c.Get("language")
+	if !ok {
+		return "en"
+	}
+	return language.(string)
 }

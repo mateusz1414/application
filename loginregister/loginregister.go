@@ -1,16 +1,17 @@
 package loginregister
 
 import (
+	"application/studentsactions"
 	"crypto/rand"
 	"encoding/base64"
-	"encoding/json"
 	"fmt"
+	"reflect"
 	"strconv"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/google"
 )
 
 //User data about user
@@ -109,29 +110,46 @@ func generateSaveToken(c *gin.Context) (state string) {
 
 //OauthLogin c
 func OauthLogin(c *gin.Context) {
-	provider := c.Param("provider")
-	fileinterface, _ := c.Get("credjson")
-	file := fileinterface.([]byte)
-	var cred Credentials
-	json.Unmarshal(file, &cred)
-	platform, endpoint := getData(provider, cred)
-	config := oauth2.Config{
-		ClientID:     platform.Cid,
-		ClientSecret: platform.Csecret,
-		RedirectURL:  platform.Redirect,
-		Scopes:       platform.Scopes,
-		Endpoint:     endpoint,
+	jwt := c.Param("jwt")
+	claims, err := jwtDecode(jwt)
+	if err != nil {
+		c.Redirect(302, "https://studentscode.online/")
+		return
 	}
-	s := config.AuthCodeURL(generateSaveToken(c))
-	fmt.Println(s)
-	c.Redirect(302, s)
+	sessionArray := []studentsactions.Session{}
+	if claims["permissions"] == nil || reflect.TypeOf(claims["permissions"]).Name() != "string" || claims["userid"] == nil || reflect.TypeOf(claims["userid"]).Name() != "float64" || claims["email"] == nil || reflect.TypeOf(claims["email"]).Name() != "string" {
+		c.Redirect(302, "https://studentscode.online/")
+		return
+	}
+	session := studentsactions.Session{
+		Key:   "permissions",
+		Value: claims["permissions"].(string),
+	}
+	sessionArray = append(sessionArray, session)
+	userID := int(claims["userid"].(float64))
+	session = studentsactions.Session{
+		Key:   "userid",
+		Value: strconv.Itoa(userID),
+	}
+	sessionArray = append(sessionArray, session)
+	session = studentsactions.Session{
+		Key:   "email",
+		Value: claims["email"].(string),
+	}
+	sessionArray = append(sessionArray, session)
+	session = studentsactions.Session{
+		Key:   "jwt",
+		Value: jwt,
+	}
+	sessionArray = append(sessionArray, session)
+	studentsactions.SaveSession(sessionArray, c)
+	c.Redirect(302, "https://studentscode.online/")
 }
 
-func getData(provider string, cred Credentials) (platform Platform, endpoint oauth2.Endpoint) {
-	switch provider {
-	case "google":
-		platform = cred.Google
-		endpoint = google.Endpoint
+func jwtDecode(jwtString string) (jwt.MapClaims, error) {
+	token, _ := jwt.Parse(jwtString, nil)
+	if len(token.Claims.(jwt.MapClaims)) == 0 {
+		return nil, fmt.Errorf("Map is empty")
 	}
-	return platform, endpoint
+	return token.Claims.(jwt.MapClaims), nil
 }

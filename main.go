@@ -6,8 +6,6 @@ import (
 	"application/studentsactions"
 	"application/translation"
 	"fmt"
-	"io/ioutil"
-	"log"
 	"os"
 	"strings"
 
@@ -61,12 +59,8 @@ func main() {
 	server.DELETE("session/:key", studentsactions.ClearKey)
 	server.POST("session/", studentsactions.SetSession)
 
-	//OAuth directory
-	file, err := ioutil.ReadFile("./config/credentials.json")
-	if err != nil {
-		log.Fatal(err.Error())
-	}
-	server.GET("/auth/:provider", sendConfig("credjson", file), loginregister.OauthLogin)
+	//OAuth login
+	server.GET("/oauth/:jwt", loginregister.OauthLogin)
 
 	/*c	onf := &oauth2.Config{
 		ClientID:     cred.Cid,
