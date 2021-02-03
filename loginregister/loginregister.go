@@ -128,7 +128,7 @@ func OauthLogin(c *gin.Context) {
 	sessionArray = append(sessionArray, session)
 	userID := int(claims["userid"].(float64))
 	session = studentsactions.Session{
-		Key:   "userid",
+		Key:   "userID",
 		Value: strconv.Itoa(userID),
 	}
 	sessionArray = append(sessionArray, session)
